@@ -1,0 +1,27 @@
+<div class="profile_box" >     
+      <div class="profile_img" >
+        <img src="/assets/images/avatar.png" alt="">
+      </div>     
+      <div class="profile_name">
+          <span>Teona</span>
+          <div class="profile_dropdown_icon" (click)="onShowDropDown($event)">
+              <img 
+                  src="/assets/images/Dropdown _ header.svg" 
+                  alt="No Icon" 
+                  class="profile_name_icon"
+                  [class.profile_name_icon-rotate]="showDropDown">
+          </div>
+          <div class="profile_dropdown" [class.profile_dropdown-show]="showDropDown">
+              <div class="profile_dropdown_item" >
+                  <img src="/assets/images/setting.svg">
+                  Settings
+              </div>
+              <div class="profile_dropdown_item" style="border-top:1px solid #EAEBF0">
+                  <img src="/assets/images/logout.svg">
+                  Logout
+              </div>
+          </div>
+      </div>
+</div>
+
+

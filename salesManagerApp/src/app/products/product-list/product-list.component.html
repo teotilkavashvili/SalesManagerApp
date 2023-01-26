@@ -1,0 +1,29 @@
+<section class="main-content">
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="addProduct()">
+      <mat-icon>add</mat-icon> Add Product
+    </button>
+  </div>
+
+  <div class="tasks-wrapper">
+    <div class="header">
+      <!-- <app-filters (changeFilters)="setFilteredTasks($event)"></app-filters> -->
+    </div>
+
+    <app-product *ngFor="let product of products; trackBy: productTrackBy"
+              (editProduct)="editProduct(product)"
+              (removeProduct)="removeProduct(product.id)"
+              [product]="product">
+    </app-product>
+  </div>
+</section>
+
+<section *ngIf="selectedProduct" class="sidebar">
+  <button mat-button (click)="selectedProduct = null">
+    <mat-icon>close</mat-icon>
+  </button>
+  <app-product-details [product]="selectedProduct"
+                    [isEditMode]="true"
+                    (updateProduct)="getProduct()">
+  </app-product-details>
+</section>

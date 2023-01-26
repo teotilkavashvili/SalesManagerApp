@@ -1,0 +1,103 @@
+
+:host {
+  width: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+
+  &.sidebar--active {
+    display: block;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #5D6D7E;
+  height: 100vh;
+  max-height: 100vh;
+  .logo img{
+    width: 61px;
+    border-bottom: 1px solid #DCDEE4;
+    }
+}
+
+.navigation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  
+    .item {
+      .icon {
+        width: 22px;
+      }
+  
+      .link {
+        cursor: pointer;
+        position: relative;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: rgb(103, 106, 108);
+        width: 40px;
+        height: 40px;
+        transition: all 0.3s;
+  
+        &.active,
+        &:hover {
+          font-weight: 700;
+          background-color: #2F80ED;
+          border-radius: 6px;
+        }
+      }
+  
+      .tooltip {
+        visibility: hidden;
+        position: absolute;
+        left: calc(100% + 10px);
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-10px, -50%);
+        background-color: #282f37;
+        border-radius: 4px;
+        padding: 6px 8px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+        color: #ffffff;
+        opacity: 0;
+        transition: all 0.3s;
+  
+        &::before {
+          content: '';
+          position: absolute;
+          left: -4px;
+          width: 0;
+          height: 0;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          border-right: 4px solid #282f37;
+        }
+      }
+  
+      &:hover {
+        .tooltip {
+          transform: translate(0, -50%);
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    } 
+}

@@ -1,0 +1,87 @@
+@import "src/styles/colors";
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  color: $dark-color;
+  position: relative;
+
+
+  &:hover {
+    .actions {
+      display: inline-flex;
+    }
+  }
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  .name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .description {
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+.check-button {
+  width: 30px;
+  height: 30px;
+  border: 2px solid $light-secondary-color;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: $white-color;
+  color: $white-color;
+
+  mat-icon {
+    display: none;
+  }
+
+  &.done {
+    background-color: $green-color;
+    border: 2px solid $green-color;
+
+    mat-icon{
+      display: block;
+    }
+  }
+}
+
+
+.actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: $light-back-color;
+  display: none;
+
+  .mat-button-toggle-appearance-standard {
+    background-color: $light-back-color;
+
+    ::ng-deep .mat-button-toggle-label-content {
+      line-height: 35px;
+    }
+  }
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    color: $white-color;
+  }
+}
+
+

@@ -1,0 +1,19 @@
+<ng-container *ngIf="product">
+  <div class="product-info">
+    <span class="name">{{product.label}}</span>
+    <p class="description">{{product.price}}</p>
+    <p> {{product.quantity}}</p>
+  </div>
+
+  <!-- <button class="product-button"
+          (click)="changeStatus.emit()"
+          [class.done]="task.done">
+    <mat-icon>check</mat-icon>
+  </button> -->
+
+
+  <mat-button-toggle-group class="actions">
+    <mat-button-toggle (click)="editProduct.emit()"><mat-icon>edit</mat-icon></mat-button-toggle>
+    <mat-button-toggle (click)="removeProduct.emit()"><mat-icon>delete</mat-icon></mat-button-toggle>
+  </mat-button-toggle-group>
+</ng-container>
