@@ -1,0 +1,40 @@
+<div class="input-container">
+    <div class="input-component">
+        <div class="input-placeholder" 
+            [class.input-placeholder-active]="options.value"
+            [class.input-placeholder-disabled]="disabled"
+            [class.input-placeholder-error]="error"
+            >
+            <span>{{options?.placeholder | translate}}</span>
+            <div class="input-placeholder-background" *ngIf="options?.placeholder"></div>
+        </div>
+        <input
+            #inputElement
+            name="{{options?.name}}"
+            type="{{options?.type}}"
+            value="{{options?.value}}"
+            [ngClass]="class"
+            [class.input-active]="options.value"
+            [class.input-disabled]="disabled"
+            [class.input-error]="error"
+            class="input"
+            [class.error-input]="error && !disabled"
+            (input)="onChange($event)"
+            (keyup.enter)="keyUpValue($event)"
+            (focusout)="keyUpValue($event)"
+            [ngStyle]="style"
+            [disabled]="disabled" 
+            [autocomplete]="autocomplete"/>
+        <div *ngIf="showButton" class="input-show" (click)="unmask()">
+            {{showState ? 'Hide' : 'Show'}}
+        </div>
+    </div>
+    <div *ngIf="helper && !error" class="input-text" [class.input-placeholder-disabled]="disabled">
+        {{helper}}
+    </div>
+    <div *ngIf="error && !disabled" class="input-text input-text-error">
+        {{error}}
+    </div>
+</div>
+
+

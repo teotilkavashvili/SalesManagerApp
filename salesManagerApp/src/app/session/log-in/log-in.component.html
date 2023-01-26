@@ -1,0 +1,63 @@
+
+      <div class="header">
+        <div>
+          <div class="title">
+            <h1>{{"Sales_Manager" | translate}} {{"Sign In" | translate}}</h1>
+          </div>
+          <div class="SignUp">
+            <span>{{'dont_account' | translate}} <span>? </span></span>
+            <div [routerLink]="['/auth', 'signup']" >
+                {{ 'Sign Up' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <form
+        class="login-content"
+        [formGroup]="loginForm"
+        (keydown.enter)="onLogin()"
+      >
+        <div class="input input--email">
+          <app-input 
+            [options]="{
+                placeholder: 'Email',
+                name: 'email',
+                type: 'email',
+                value: loginForm.value.email ? loginForm.value.email : ''
+                }" (onOutPutValue)="onChangeFormValue($event)"
+                [error]="error.email">
+          </app-input>
+        </div>
+        <div class="input input--password">
+          <app-input [options]="{
+                      placeholder: 'Password',
+                      name: 'password',
+                      type: 'password',
+                      value: loginForm.value.password ? loginForm.value.password : ''
+                      }" (onOutPutValue)="onChangeFormValue($event)" 
+                      [error]="error.password">
+          </app-input>
+          <span class="showPassword" affShowPassword>{{'Show' | translate }}</span>
+        </div>
+        <div class="btns">
+          <aff-button
+            [text]="'Sign In'"
+            [name]="'login'"
+            [type]="'submit'"
+            [options]="{
+              background: '#2F80ED',
+              color: '#FFFFFF',
+              height: '40px',
+              width: '336px',
+              fontFamily: 'Roboto-Bold',
+              'padding':'8px 24px',
+              'border-radius':'8px',
+              fontSize: '14px'
+            }"
+            (onClicked)="onLogin()"
+          ></aff-button>
+        </div>
+  
+        <div class="message" *ngIf="error.errorMessage">{{ error.errorMessage }}</div>
+      </form>
+  

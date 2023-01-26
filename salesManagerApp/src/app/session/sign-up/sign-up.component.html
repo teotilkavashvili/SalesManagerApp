@@ -1,0 +1,72 @@
+ <div class="header">
+    <div>
+      <div class="title">
+        <h1>{{"Sales_Manager" | translate}} {{"Sign Up" | translate}}</h1>
+      </div>
+      <div class="SignUp">
+        <span>{{'Already have an account' | translate}}?</span>
+        <div [routerLink]="['/auth', 'signin']">{{"Sign In" | translate}}</div>
+      </div>
+    </div>
+  </div>
+<form
+  class="reg-content"
+  [formGroup]="registrationForm"
+  (keydown.enter)="onSignup()"
+>
+    <div class="input input--fistname">
+        <app-input [options]="{
+                          placeholder: 'First Name',
+                          name: 'firstName',
+                          type: 'text',
+                          value: registrationForm.value.firstName ? registrationForm.value.firstName : ''
+                          }" [error]="notification.firstName">
+        </app-input>
+    </div>
+    <div class="input input--lastname">
+        <app-input [options]="{
+                            placeholder: 'Last Name',
+                            name: 'lastName',
+                            type: 'text',
+                            value: registrationForm.value.last_name ? registrationForm.value.last_name : ''
+                            }" [error]="notification.last_name">
+        </app-input>
+    </div>
+    <div class="input input--email">
+      <app-input [options]="{
+                    placeholder: 'Email',
+                    name: 'email',
+                    type: 'email',
+                    value: registrationForm.value.email ? registrationForm.value.email : ''
+                    }"  [error]="notification.email"
+                    [autocomplete]="'new-email'">
+      </app-input>
+    </div>
+    <div class="input input--password">
+      <app-input [options]="{
+                        placeholder: 'Password',
+                        name: 'password',
+                        type: 'password',
+                        value: registrationForm.value.password ? registrationForm.value.password : ''
+                        }"  [error]="notification.password"
+                        [autocomplete]="'new-password'">
+      </app-input>
+      <span class="showPassword" affShowPassword>{{'Show' | translate}}</span>
+    </div>  
+  <div class="btns">
+    <aff-button
+      [text]="'Sign Up'"
+      [name]="'sign_up'"
+      [options]="{
+        background: '#2F80ED',
+        color: '#FFFFFF',
+        width: '336px',
+        fontFamily: 'Helvetica',
+        'border-radius':'8px',
+        fontSize: '14px'
+      }"
+      (click)="onSignup()"
+    ></aff-button>
+  </div>
+  
+</form>

@@ -1,0 +1,155 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(130deg, #005767 0%, #a95583 70%);
+    // background: #2E2A39;
+    width: 100%;
+    height: 100vh;
+    .innerContainer {
+      flex: 1;
+      width: 1200px;
+      margin: auto;
+      .header {
+        height: 104px;
+        width: 100%;
+        border-bottom: 1px solid rgba(241, 241, 241, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+            margin-top:10px;
+            width: 100px;
+        }
+      }
+      .login-container {
+        margin: 40px 0px;
+        display: flex;
+        justify-content: space-between;
+        
+        .about-project {
+          width: 716px;
+          .title {
+            width: 588px;
+            h1 {
+              span {
+                color: #F15A22;
+              }
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 32px;
+              line-height: 40px;
+              color: #FFFFFF;
+              margin-bottom:32px;
+            }
+            h5 {
+              color: #f2622b;
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 22px;
+              line-height: 40px;
+              margin-top: 20px 0px;
+            }
+            p {
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 21px;
+              color: #FFFFFF;
+              opacity: 0.64;
+              
+            }
+          }
+          .steps {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 32px;
+            width: 716px;
+            height: 156.22px;
+            .step1 {
+              width: 218px;
+              height: 156px;
+              position: relative;
+              top: 0px;
+            }
+            .step2 {
+              width: 203px;
+              height: 156px;
+              margin-left:45px;
+              position: relative;
+            }
+            .step3 {
+              width: 205px;
+              height: 156px;
+              margin-left:45px;
+              position: relative;
+            }
+            .number {
+              color: rgba(242, 98, 43, 0.2);
+              position: absolute;
+              width: 29px;
+              // height: 113px;
+              left: 0px;
+              top: 0px;
+              font-family: 'Poppins';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 75px;
+              // line-height: 112px;
+            }
+            .stepInfo {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              padding: 0px;
+              height: 112px;
+              margin-top: 30px;
+              margin-left: 18px;
+              span {
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 27px;
+                color: #FFFFFF;
+              }
+              p {
+                margin-top:10px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.8);
+                line-height: 24px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .login-reg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    &-form {
+    //   width: 384px;
+      box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.04);
+      border: solid 1px rgba(44, 70, 119, 0.1);
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 24px;
+    }
+  }
+
+  .active{
+    background-color: #6CA6A6;
+    margin:5px;
+  }

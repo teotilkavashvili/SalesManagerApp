@@ -1,0 +1,88 @@
+
+
+  .header {
+    width: 336px;
+    margin: auto;
+    .title {
+      margin: 24px auto;
+      text-align: center;
+      h1 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 32px;
+        color: #1d263a;
+      }
+    }
+    .SignUp {
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #8798a8;
+      }
+      div {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #2f80ed;
+        cursor: pointer;
+      }
+    }
+  }
+   
+  .login-content {
+    padding: 24px;
+  }
+ 
+  .error-input {
+    border: 1px solid #D3220B;
+    color: #182939;
+  }
+  
+  .input {
+    position: relative;
+  
+    &--password, &--email {
+      width: 350px;
+      margin-bottom:16px;
+    }
+  }
+  
+  #password::-ms-reveal,
+  #password::-ms-clear {
+    display: none;
+  }
+
+  .showPassword{
+      position: absolute;
+      top: 15px;
+      cursor: pointer;
+      right: 12px;   
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;   
+      color: #8798A8;
+      z-index: 10;
+  }
+  
+  .errorMessage {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    color: #ed5757;
+    margin-left: 5px;
+  } 
+  
+  .error {
+    color: #D3220B;
+  }
+  

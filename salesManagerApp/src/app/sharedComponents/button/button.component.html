@@ -1,0 +1,15 @@
+<div [class.disabled]="disabled" [ngClass]="disableClass">
+    <a class="btn" [ngClass]="renderClass" [type]="type" [ngStyle]="options" (click)="onClick()">
+        <div class="loader" *ngIf="loader">
+            <img src="/assets/images/spinner.svg">
+        </div>
+        <div class="joined" *ngIf="text==='Joined'">
+            <img src="/assets/images/joined.svg">
+        </div>
+        <div class="text" *ngIf="!loader">{{ text | translate}}</div> 
+        <div class="tooltip" *ngIf="tooltip">
+            <span >{{ tooltip}}</span>
+            <div class="square"></div>
+        </div> 
+    </a> 
+</div>
