@@ -12,6 +12,11 @@ export class ProductComponent{
   @Output() public changeStatus: EventEmitter<void> = new EventEmitter<void>();
   @Output() public removeProduct: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor() { }
+
   // public readonly routes: typeof ApplicationRoutes = ApplicationRoutes;
+  public ngOnInit(): void {
+         
+  }
 
 }

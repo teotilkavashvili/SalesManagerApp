@@ -14,6 +14,18 @@ export class ProductListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.products=[{
+      "id": 1,
+      "label": "laptop",
+      "price": 800,
+      "quantity": 5
+    },
+    {
+      "id": 2,
+      "label": "ipod",
+      "price": 300,
+      "quantity": 8
+    }]
   }
 
   public productTrackBy(index: number, product: Product) {

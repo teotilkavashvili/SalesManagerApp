@@ -3,11 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss']
+  selector: 'app-log-in-form',
+  templateUrl: './log-in-form.component.html',
+  styleUrls: ['./log-in-form.component.scss']
 })
-export class LogInComponent implements OnInit {
+export class LogInFormComponent implements OnInit {
 
   @Input() item:boolean=true;
   loginForm: FormGroup;
@@ -48,6 +48,7 @@ export class LogInComponent implements OnInit {
   onLogin(): void {
     this.checkErrors();
     this.submitted = true;
+    this.router.navigate(['/products']);
   }
 
   onChangeFormValue(options:any): void {

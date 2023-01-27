@@ -1,4 +1,5 @@
 export const ROUTES = {
-  SIGNIN: 'auth',
-  // DASHBOARD:'dashboard'
+  SIGNIN: 'login',
+  PRODUCTS:'products',
+  MANAGERS:'managers'
 };

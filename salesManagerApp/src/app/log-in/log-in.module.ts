@@ -1,30 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SessionComponent } from './session.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { SessionRoutingModule } from './session-routing.module';
+import { LogInComponent } from './log-in.component';
+import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputModule } from '../sharedComponents/input/input.module';
 import { ButtonModule } from '../sharedComponents/button/button.module';
 import { TranslateModule } from '@ngx-translate/core'; 
 import {MatButtonModule} from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+
+const route=[{
+  path: '',
+  component: LogInComponent
+
+}]
 
 @NgModule({
   imports: [
     CommonModule,
-    SessionRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     InputModule,
     ButtonModule,
     TranslateModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forChild(route)
   ],
   declarations: [
-    SessionComponent, 
-    SignUpComponent, 
-    LogInComponent
+    LogInComponent,
+    LogInFormComponent
   ]
 })
-export class SessionModule { }
+export class LogInModule { }

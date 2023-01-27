@@ -1,15 +1,23 @@
 <ng-container *ngIf="product">
   <div class="product-info">
-    <span class="name">{{product.label}}</span>
-    <p class="description">{{product.price}}</p>
-    <p> {{product.quantity}}</p>
+    <span class="name">{{product.label | uppercase}}</span>
+    <div class="price">
+      <span>Price: </span>
+      {{product.price}} 
+      <span>$</span>
+    </div>
+    <div class="quantity">
+      <span>Quantity: </span>
+      {{product.quantity}} 
+    </div>
+    <!-- <p class="quantity"> {{product.quantity}}</p> -->
   </div>
+  
 
-  <!-- <button class="product-button"
-          (click)="changeStatus.emit()"
-          [class.done]="task.done">
-    <mat-icon>check</mat-icon>
-  </button> -->
+  <button  mat-flat-button color="primary"
+          (click)="changeStatus.emit()">
+    sell product
+  </button>
 
 
   <mat-button-toggle-group class="actions">

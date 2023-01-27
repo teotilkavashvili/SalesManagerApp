@@ -10,11 +10,15 @@
       <!-- <app-filters (changeFilters)="setFilteredTasks($event)"></app-filters> -->
     </div>
 
-    <app-product *ngFor="let product of products; trackBy: productTrackBy"
-              (editProduct)="editProduct(product)"
-              (removeProduct)="removeProduct(product.id)"
-              [product]="product">
-    </app-product>
+    <div  class="product">
+      <app-product *ngFor="let product of products; trackBy: productTrackBy"
+        (editProduct)="editProduct(product)"
+        (removeProduct)="removeProduct(product.id)"
+        [product]="product">
+      </app-product>
+    </div>
+
+    
   </div>
 </section>
 

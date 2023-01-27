@@ -10,9 +10,14 @@ import { NavigationRoutingModule } from './navigation-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    NavigationRoutingModule
+    // NavigationRoutingModule
   ],
   declarations: [
+    NavigationComponent,
+    HeaderComponent,
+    SideBarComponent
+  ],
+  exports:[
     NavigationComponent,
     HeaderComponent,
     SideBarComponent
