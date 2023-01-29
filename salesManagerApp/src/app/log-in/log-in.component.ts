@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-  lang : string 
+  lang : string;
+  user: string;
+  password: string; 
 
-  constructor(private translateService: TranslateService) { }
+  constructor(
+    private translateService: TranslateService,
+    ) { }
 
 
   isLanguage(lang: String) {
@@ -23,7 +26,7 @@ export class LogInComponent implements OnInit {
   ngOnInit() {
     console.log(localStorage.getItem('lang'));
     this.lang = localStorage.getItem('lang') || 'en';
-    this.translateService.use(this.lang);3
+    this.translateService.use(this.lang);
   }
 
   changeLang(event){

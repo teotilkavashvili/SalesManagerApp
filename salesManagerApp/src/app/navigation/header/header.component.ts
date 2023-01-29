@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { logout } from 'src/app/store/login/login.actions';
+import { LoginState } from 'src/app/store/login/login.reducer';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   showDropDown: boolean = false;
+  authenticatedUser$ = this.store.select(state => state.loggedIn);
+  user:string ;
+  
 
-  constructor() { }
+  constructor(private store: Store<LoginState>) { }
 
   ngOnInit() {
+  console.log(this.authenticatedUser$);
+    this.store.select(state=>state.user).subscribe(
+      user=>{
+        this.user=user.name
+      }
+    )
   }
 
   onShowDropDown(e: any): void {
     e.stopPropagation();
     this.showDropDown = !this.showDropDown;
   }
-
+  signOut(){
+    this.store.dispatch(logout());
+    this.showDropDown = !this.showDropDown;
+  }
 
 }

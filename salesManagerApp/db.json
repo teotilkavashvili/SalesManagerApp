@@ -12,5 +12,24 @@
       "price": 300,
       "quantity": 8
     }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "name": "Teona",
+      "surname": "Tilkavashvili",
+      "user":"teona@gmail.com",
+      "password": "12345678",
+      "date":"12/01/2023"
+    },
+    {
+      "id": 1,
+      "name": "Giorgi",
+      "surname": "Bla",
+      "user":"giorgi@gmail.com",
+      "password": "12345678",
+      "date":"15/01/2023"
+    }
   ]
 }

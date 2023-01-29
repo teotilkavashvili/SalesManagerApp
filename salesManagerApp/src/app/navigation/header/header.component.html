@@ -3,7 +3,7 @@
         <img src="/assets/images/avatar.png" alt="">
       </div>     
       <div class="profile_name">
-          <span>Teona</span>
+          <span *ngIf="user">Welcome {{user}}</span>
           <div class="profile_dropdown_icon" (click)="onShowDropDown($event)">
               <img 
                   src="/assets/images/Dropdown _ header.svg" 
@@ -16,7 +16,9 @@
                   <img src="/assets/images/setting.svg">
                   Settings
               </div>
-              <div class="profile_dropdown_item" style="border-top:1px solid #EAEBF0">
+              <div class="profile_dropdown_item" 
+                    style="border-top:1px solid #EAEBF0"
+                    (click)="signOut()">
                   <img src="/assets/images/logout.svg">
                   Logout
               </div>

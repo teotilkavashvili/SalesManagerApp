@@ -7,6 +7,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationModule } from './navigation/navigation.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { loginReducer } from './store/login/login.reducer';
+import { environment } from 'src/environments/environment';
+import { Loginffects } from './store/login/login.effects';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -28,8 +34,17 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
-
+    }),
+    StoreModule.forRoot({
+      login: loginReducer,
+    }),
+    EffectsModule.forRoot([
+      Loginffects
+    ]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
