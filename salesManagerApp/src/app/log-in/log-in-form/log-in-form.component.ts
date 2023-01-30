@@ -81,24 +81,22 @@ export class LogInFormComponent implements OnInit {
     this.checkErrors();
     this.submitted = true;
     this.store.dispatch(login({ user: this.loginForm.value.email, password: this.loginForm.value.password }));
-    this.store.select(isLoggedIn).subscribe(loggedIn => {
-      if (loggedIn) {
-        console.log(loggedIn);
-        this.router.navigate(['/products']);
-      }else {
-        console.log(loggedIn);
-        alert('Incorrect user or password');
-      }
-    });
-    // this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe
-    // (userFound => {
-    //   if (userFound) {
-    //     this.store.dispatch(login({ user: this.loginForm.value.email, password: this.loginForm.value.password }));
+    // this.store.select(isLoggedIn).subscribe(loggedIn => {
+    //   if (loggedIn) {
+    //     console.log(loggedIn);
     //     this.router.navigate(['/products']);
-    //   } else {
+    //   }else {
+    //     console.log(loggedIn);
     //     alert('Incorrect user or password');
     //   }
     // });
+    this.loginService.loginn(this.loginForm.value.email,this.loginForm.value.password ).subscribe(
+      (isLoggedIn) => {
+      if (isLoggedIn) {
+        this.router.navigate(['/products']);
+      }
+    });
+    
 
   }
 

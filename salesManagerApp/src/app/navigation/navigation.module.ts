@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation.component';
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { RouterModule } from '@angular/router';
-import { NavigationRoutingModule } from './navigation-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   imports: [

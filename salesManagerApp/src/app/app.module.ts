@@ -13,6 +13,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { loginReducer } from './store/login/login.reducer';
 import { environment } from 'src/environments/environment';
 import { Loginffects } from './store/login/login.effects';
+import { productReducer } from './store/product/product.reducer';
+import { ProductEffects } from './store/product/product.effects';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -37,9 +40,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     }),
     StoreModule.forRoot({
       login: loginReducer,
+      // product: productReducer
     }),
     EffectsModule.forRoot([
-      Loginffects
+      Loginffects,
+      // ProductEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

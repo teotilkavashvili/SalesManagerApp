@@ -24,22 +24,22 @@ export class Loginffects {
       mergeMap(action =>
         this.loginService.login(action.user, action.password).pipe(
           map(res => {
+            console.log(res);
             if(res){
-
-                return loginSuccess({user:res});
+                return  loginSuccess({user:res});
             }  else{
                 
-                return loginFailure({error:"error"});
+                return  loginFailure({error:"Invalid username or password"});
             }          
           }),
           tap(res=>{
             if(res){
-                localStorage.setItem('authToke', res['user']);
+                // localStorage.setItem('authToke', res['user']);
             }
           }),
-        //   catchError(error =>{
-        //     return of(loginFailure({error}))
-        //   })
+          catchError(error =>
+             of(loginFailure({error}))
+          )
         )
       )
     )
@@ -51,7 +51,7 @@ export class Loginffects {
         ofType(logout),
         tap(() => {
           this.router.navigate(["/login"]);
-          localStorage.removeItem('authToke');
+          localStorage.removeItem('user');
         })
       ),
     { dispatch: false }

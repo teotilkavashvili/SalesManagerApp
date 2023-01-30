@@ -11,7 +11,7 @@ import { LoginState } from 'src/app/store/login/login.reducer';
 export class HeaderComponent implements OnInit {
   showDropDown: boolean = false;
   authenticatedUser$ = this.store.select(state => state.loggedIn);
-  user:string ;
+  user:any ;
   
 
   constructor(private store: Store<LoginState>) { }
@@ -20,9 +20,12 @@ export class HeaderComponent implements OnInit {
   console.log(this.authenticatedUser$);
     this.store.select(state=>state.user).subscribe(
       user=>{
-        this.user=user.name
+        this.user=user
+        console.log(this.user)
       }
     )
+    const user = JSON.parse(localStorage.getItem('user'));
+      this.user= user.name;
   }
 
   onShowDropDown(e: any): void {

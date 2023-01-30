@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../interfaces/user';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { login } from '../store/login/login.actions';
 
 @Injectable({ providedIn: 'root' })
 
@@ -11,6 +12,7 @@ export class AuthService {
 
   baseUrl = environment.baseUrl;
   users: User;
+  private loggedIn = false;
 
   constructor(
     private http: HttpClient,
@@ -25,38 +27,39 @@ export class AuthService {
   }
 
 
-  public login(user: string, password: string) {
+  public loginn(user: string, password: string) {
     console.log("Shemovida")
     return this.http.get<any>('http://localhost:3000/users').pipe(
       map(response => {
         const userFound = response.find(u => u.user === user && u.password === password);
         if (userFound) {
-          console.log("userFound",userFound)
-          return userFound;
+          localStorage.setItem('user', JSON.stringify(userFound));
+          return true;
         } 
         else {
-          console.log("invalid user")
-           return throwError(() => new Error(`Invalid login`));          
+          return false      
         }
       }),
+      catchError(() => {
+          return of(false);
+      })
     );
   }
 
-  // public signIn(user: string, password: string) {
-  //   return this.http.post<any>('/api/login', { user, password }).pipe(
-  //     map(response => {
-  //       if (response.status === 'success') {
-  //         this.store.dispatch(login({ user }));
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     }),
-  //     catchError(() => {
-  //       return of(false);
-  //     })
-  //   );
-  // }
+  logout() {
+    this.loggedIn = false;
+  }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('user');
+  }
+
+  public login(user: string, password: string): Observable<any> {
+    return this.http.get('http://localhost:3000/users')
+      .pipe(
+        map((users: any[]) => users.find(u => u.user === user && u.password === password))
+      );
+  }
 
   public logIn(user: string, password: string) {
     return this.http.get<any[]>(`${this.baseUrl}/users`)
