@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { take, tap } from 'rxjs/operators';
 import { Product } from 'src/app/interfaces/product';
+import { ProductService } from 'src/app/services/product.service';
 import { CreateProduct } from 'src/app/store/product/product.actions';
+import {v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-product-details',
@@ -14,17 +16,18 @@ export class ProductDetailsComponent implements OnInit {
   @Input() public product: Product;
   @Input() public isEditMode: boolean;
 
-  public taskFormGroup: FormGroup;
+  public productFormGroup: FormGroup;
 
   @Output() public updateProduct: EventEmitter<Product> = new EventEmitter<Product>();
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private store: Store<Product>
+    private store: Store<Product>,
+    private productService:ProductService
     ) { }
 
   public ngOnInit(): void {
-    this.taskFormGroup = this.formBuilder.group({
+    this.productFormGroup = this.formBuilder.group({
       id: this.product?.id,
       label: [this.product?.label, Validators.required],
       price: [this.product?.price,Validators.required],
@@ -32,29 +35,27 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-
-
   public saveChanges(): void {
-    if (this.taskFormGroup.invalid) {
-      this.taskFormGroup.markAllAsTouched();
+    if (this.productFormGroup.invalid) {
+      this.productFormGroup.markAllAsTouched();
       return;
     }
 
     this.product = {
       ...this.product,
-      ...this.taskFormGroup.value,
-      done: this.taskFormGroup.value.done ? this.product || new Date().toString() : false,
+      ...this.productFormGroup.value,
+      done: this.productFormGroup.value.done ? this.product || new Date().toString() : false,
     };
+    let id=uuid()
+    const saveTaskMethod = this.product.id ? this.productService.editProduct(this.product) : this.productService.addProduct(this.product);
 
-    // const saveTaskMethod = this.product.id ? this.tasksService.updateTask(this.task) : this.tasksService.createTask(this.task);
-
-    // saveTaskMethod.pipe(
-    //   tap(() => {
-    //     this.isEditMode = false;
-    //     this.updateTask.emit(this.product);
-    //   }),
-    //   take(1)
-    // ).subscribe();
+    saveTaskMethod.pipe(
+      tap(() => {
+        this.isEditMode = false;
+        this.updateProduct.emit(this.product);
+      }),
+      take(1)
+    ).subscribe();
     console.log(this.product);
     this.store.dispatch(CreateProduct({ product: this.product }));
   }

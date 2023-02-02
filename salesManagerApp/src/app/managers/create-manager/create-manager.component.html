@@ -1,0 +1,25 @@
+
+  <form [formGroup]="managerFormGroup">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User</mat-label>
+      <input matInput formControlName="user" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" />
+    </mat-form-field>
+  </form>
+
+
+<div class="actions">
+  <button mat-raised-button color="accent"
+          (click)="saveChanges()">Save</button>
+</div>

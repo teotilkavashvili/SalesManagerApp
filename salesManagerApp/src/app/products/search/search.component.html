@@ -1,0 +1,19 @@
+<div class="wrap">
+  <div class="search">
+    <div class="searchBox">
+      <div class="input-Div">
+        <input 
+          type="text" 
+          placeholder="Product name"
+          (input)="onSearch($event)"
+          id="search" />
+        <div 
+        class="search-icon" 
+        (click)="onSearch(searchInfo)">
+          <img src="/assets/images/search-icon.svg" alt="search-icon" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

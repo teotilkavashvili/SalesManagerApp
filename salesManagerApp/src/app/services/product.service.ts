@@ -16,7 +16,12 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}/products`);
   }
 
-  public editProduct(product: Product): Observable<Product> {
+  // public getAllProducts(page,pageSize): Observable<Product[]> {
+  //   console.log("shemovidaaaa");
+  //   return this.http.get<Product[]>(`${this.baseUrl}/products?_page=${page}&_limit=${pageSize}`);
+  // }
+
+  public editProduct(product: any): Observable<Product> {
     return this.http.patch<Product>(`${this.baseUrl}/products/${product.id}`, product);
   }
 
@@ -24,7 +29,7 @@ export class ProductService {
     return this.http.post<Product>(`${this.baseUrl}/products`, product);
   }
 
-  public deleteProduct(productId: Product): Observable<boolean> {
+  public deleteProduct(productId:any): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/products/${productId}`);
   }
 

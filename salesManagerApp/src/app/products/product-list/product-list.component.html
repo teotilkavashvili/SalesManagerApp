@@ -7,6 +7,9 @@
 
   <div class="tasks-wrapper">
     <div class="header">
+      <app-search
+        (outPutKeyword)="onSearchTask($event)"
+      ></app-search>
       <!-- <app-filters (changeFilters)="setFilteredTasks($event)"></app-filters> -->
     </div>
 
@@ -17,6 +20,15 @@
         [product]="product">
       </app-product>
     </div>
+    <div class="pagination">
+      <mat-paginator
+      [length]="ProductsTotalAmount"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChanged($event)">
+      </mat-paginator>
+    </div>
+    
 
     
   </div>

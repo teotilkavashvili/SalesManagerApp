@@ -14,7 +14,7 @@ import { loginReducer } from './store/login/login.reducer';
 import { environment } from 'src/environments/environment';
 import { Loginffects } from './store/login/login.effects';
 import { productReducer } from './store/product/product.reducer';
-import { ProductEffects } from './store/product/product.effects';
+import { AuthStoreModule } from './store/store.module';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -38,14 +38,15 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    StoreModule.forRoot({
-      login: loginReducer,
-      // product: productReducer
-    }),
-    EffectsModule.forRoot([
-      Loginffects,
-      // ProductEffects
-    ]),
+    // StoreModule.forRoot({
+    //   login: loginReducer,
+    //   product: productReducer,
+    // }),
+    // EffectsModule.forRoot([
+    //   Loginffects,
+    //   ProductEffects
+    // ]),
+    AuthStoreModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

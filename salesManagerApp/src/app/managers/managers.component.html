@@ -1,3 +1,23 @@
-<p>
-  managers works!
-</p>
+
+<section class="main-content">
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="addManager()">
+        <mat-icon>add</mat-icon> Add Product
+      </button>
+    </div>  
+    <div class="tasks-wrapper"> 
+      <div  class="product">
+        <app-manager-list>
+        </app-manager-list>
+      </div>     
+    </div>
+  </section>
+  
+  <section class="sidebar" *ngIf="manager" >
+    <button mat-button (click)="manager=null">
+      <mat-icon>close</mat-icon>
+    </button>
+        <app-create-manager
+        (updateManager)="getManagers()">
+        </app-create-manager>
+  </section>

@@ -13,6 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { SearchComponent } from './search/search.component';
+import { ProductSellComponent } from './product-sell/product-sell.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -27,12 +31,17 @@ import { ProductListComponent } from './product-list/product-list.component';
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonToggleModule,
+    MatPaginatorModule,
+    MatDialogModule,
   ],
   declarations: [
     ProductsComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    ProductComponent
-  ]
+    ProductComponent,
+    SearchComponent,
+    ProductSellComponent
+  ],
+  entryComponents: [ProductSellComponent],
 })
 export class ProductsModule { }

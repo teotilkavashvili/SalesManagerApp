@@ -1,0 +1,109 @@
+<div class="mat-elevation-z8 costumerTable" >
+  <table mat-table [dataSource]="dataManagerSource">
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> 
+        <div>
+          <mat-form-field
+            appearance="outline"
+            matTooltip="User"
+            matTooltipPosition="after">
+            <input 
+            matInput 
+            class="form-field" 
+            placeholder="User"
+            (keyup)="applyFilter($event)"
+            >
+          </mat-form-field>
+        </div>	 
+      </th>
+      <td mat-cell *matCellDef="let user"> {{user}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> 
+        <div>
+          <mat-form-field
+            appearance="outline"
+            matTooltip="Name"
+            matTooltipPosition="after">
+            <input 
+            matInput 
+            class="form-field" 
+            placeholder="Name"
+            (keyup)="applyFilter($event)"
+            >
+          </mat-form-field>
+        </div>	
+      </th>
+      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="surName">
+      <th mat-header-cell *matHeaderCellDef> 
+        <div>
+          <mat-form-field
+            appearance="outline"
+            matTooltip="Surname"
+            matTooltipPosition="after">
+            <input 
+            matInput 
+            class="form-field" 
+            placeholder="Surname"
+            (keyup)="applyFilter($event)"
+            >
+          </mat-form-field>
+        </div>	
+        
+      </th>
+      <td mat-cell *matCellDef="let user"> {{user.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>
+        <div>
+          <mat-form-field
+            appearance="outline"
+            matTooltip="date"
+            matTooltipPosition="after">
+            <input 
+            matInput 
+            class="form-field" 
+            placeholder="Date"
+            (keyup)="applyFilter($event)"
+            >
+          </mat-form-field>
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let user"> {{user.date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>  
+        <div>
+          <mat-form-field
+            appearance="outline"
+            matTooltip="Sold Product Sum"
+            matTooltipPosition="after">
+            <input 
+            matInput 
+            class="form-field" 
+            placeholder="Sold Product Sum"
+            (keyup)="applyFilter($event)"
+            >
+          </mat-form-field>
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let user"> {{user.total}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actionIcons" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef>Sold Products</th>
+      <td mat-cell *matCellDef="let user" (click)="checkCards(user)">  </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayeManagersColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayeManagersColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+               showFirstLastButtons 
+               aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>

@@ -29,7 +29,9 @@ public static onError(option: any, name?:string) {
     email: `Email format is not correct!`,
     NoPassswordMatch: "Password Does not match!",
     "^[A-Za-z-]+$": "Use only latin letters and hyphen",
-    "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$":"Email format is not correct!"
+    "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$":"Email format is not correct!",
+    max:"it's more than total quantity"
+    
   };
 
   if (key == "pattern") {
@@ -37,6 +39,21 @@ public static onError(option: any, name?:string) {
   }
 
   return error[key];
+}
+
+public static dateFormater(date: any): string {
+  if (!date) return null;
+  const formatedDate = new Date(date);
+  const year = formatedDate.getFullYear(),
+    month = formatedDate.getMonth() + 1, // months are zero indexed
+    day = formatedDate.getDate(),
+    hour = formatedDate.getHours(),
+    minute = formatedDate.getMinutes(),
+    second = formatedDate.getSeconds();
+
+  return (
+    day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second
+  );
 }
 
 }

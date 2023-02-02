@@ -1,4 +1,4 @@
-export interface User {
+export interface Manager {
     id: number,
     name: string,
     surName: string,

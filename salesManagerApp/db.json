@@ -3,33 +3,71 @@
     {
       "id": 1,
       "label": "laptop",
-      "price": 800,
+      "price": "1200",
       "quantity": 5
     },
     {
       "id": 2,
       "label": "ipod",
       "price": 300,
-      "quantity": 8
+      "quantity": 8,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "label": "Mac Book",
+      "price": "1600",
+      "quantity": "28",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "label": "Air Pads",
+      "price": "200",
+      "quantity": "26",
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "label": "apple",
+      "price": "1515",
+      "quantity": "15",
+      "userId": 1
     }
   ],
-
   "users": [
     {
       "id": 1,
       "name": "Teona",
       "surname": "Tilkavashvili",
-      "user":"teona@gmail.com",
+      "user": "teona@gmail.com",
       "password": "12345678",
-      "date":"12/01/2023"
+      "date": "12/01/2023"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Giorgi",
       "surname": "Bla",
-      "user":"giorgi@gmail.com",
+      "user": "giorgi@gmail.com",
       "password": "12345678",
-      "date":"15/01/2023"
+      "date": "15/01/2023"
+    },
+    {
+      "id": 3,
+      "name": "test",
+      "surname": "test",
+      "user": "test@gmail.com",
+      "password": "12345678",
+      "date": "2/2/2023 15:51:13"
+    }
+  ],
+  "soldProducts": [
+    {
+      "productId": 1,
+      "userId": 1,
+      "date": "15/01/2023",
+      "quantity": 1,
+      "price": 500
     }
   ]
 }

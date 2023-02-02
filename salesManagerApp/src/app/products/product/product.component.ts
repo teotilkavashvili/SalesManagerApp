@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Product } from 'src/app/interfaces/product';
+import { ProductSellComponent } from '../product-sell/product-sell.component';
 
 @Component({
   selector: 'app-product',
@@ -11,12 +13,35 @@ export class ProductComponent{
   @Output() public editProduct: EventEmitter<void> = new EventEmitter<void>();
   @Output() public changeStatus: EventEmitter<void> = new EventEmitter<void>();
   @Output() public removeProduct: EventEmitter<void> = new EventEmitter<void>();
+  quantity:number
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   // public readonly routes: typeof ApplicationRoutes = ApplicationRoutes;
   public ngOnInit(): void {
          
+  }
+
+  sellProduct(product): void {
+    const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = {
+          product
+      };
+
+        this.dialog.open(ProductSellComponent, dialogConfig);
+    console.log(product)
+    // const dialogRef = this.dialog.open(ProductSellComponent, {
+    //   width: '250px',
+    //   data: { animal: this.quantity}
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   console.log(result);
+    // });
   }
 
 }

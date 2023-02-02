@@ -14,15 +14,6 @@ export const initialState: LoginState = {
   loggedIn: false
 };
 
-// interface LoginState {
-//     userFound: any;
-// }
-  
-// const initialState: LoginState = {
-//     userFound: null
-// };
-
-
 export const loginReducer = createReducer(
     initialState,
     on(login, (state, { user, password }) => {
@@ -31,13 +22,6 @@ export const loginReducer = createReducer(
             ...state,
         };
       }),
-    // on(login, (state, {user, password}) => ({...state, user, password})),
-    // on(login, (state, {userFound}) => {
-    //     return {
-    //       ...state,
-    //       userFound
-    //     }
-    //   }),
     on(logout, state => (
         {...state, 
             user: null, 
