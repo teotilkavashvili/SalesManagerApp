@@ -2,19 +2,19 @@
   <div class="product-info">
     <span class="name">{{product.label | uppercase}}</span>
     <div class="price">
-      <span>Price: </span>
+      <span>{{'Price' | translate}}:</span>
       {{product.price}} 
       <span>$</span>
     </div>
     <div class="quantity">
-      <span>Quantity: </span>
+      <span>{{"Quantity" | translate}}: </span>
       {{product.quantity}} 
     </div>
   </div>
   <button  mat-flat-button color="primary"
           (click)="sellProduct(product)"
           >
-        sell product
+        {{"sell product" | translate}}
   </button>
   <mat-button-toggle-group class="actions">
     <mat-button-toggle (click)="editProduct.emit()"><mat-icon>edit</mat-icon></mat-button-toggle>

@@ -1,44 +1,40 @@
 <div class="profile_box" > 
-    <div class="langBtns">
-            <button  
-              mat-fab extended
-              [class.active]="lang === 'ka'"
-              (click)="changeLang('ka')">
-                  {{"GE" }}
-            </button>
-            <button 
-              mat-fab extended
-              [class.active]="lang === 'en'"
-              (click)="changeLang('en')">
-                  {{"EN" }}
-            </button>
-          </div>    
+            
       <div class="profile_img" >
         <img src="/assets/images/avatar.png" alt="">
       </div>     
       <div class="profile_name">
-          <span *ngIf="user">Welcome {{user}}</span>
+          <span *ngIf="user">{{'Welcome' | translate}} <span> {{user}}</span>  </span>
           <div class="profile_dropdown_icon" (click)="onShowDropDown($event)">
               <img 
                   src="/assets/images/Dropdown _ header.svg" 
                   alt="No Icon" 
                   class="profile_name_icon"
                   [class.profile_name_icon-rotate]="showDropDown">
-          </div>
-          
+          </div>        
           <div class="profile_dropdown" [class.profile_dropdown-show]="showDropDown">
-              <!-- <div class="profile_dropdown_item" >
-                  <img src="/assets/images/setting.svg">
-                  Settings
-              </div> -->
               <div class="profile_dropdown_item" 
                     style="border-top:1px solid #EAEBF0"
                     (click)="signOut()">
                   <img src="/assets/images/logout.svg">
-                  Logout
+                  {{'Logout' | translate}}
               </div>
           </div>
       </div>
+      <div class="langBtns">
+        <button  
+        mat-mini-fab extended
+        [class.active]="lang === 'ka'"
+        (click)="changeLang('ka')">
+            {{"GE" | translate }}
+        </button>
+        <button 
+        mat-mini-fab extended
+        [class.active]="lang === 'en'"
+        (click)="changeLang('en')">
+            {{"EN"| translate }}
+        </button>
+    </div>
 </div>
 
 

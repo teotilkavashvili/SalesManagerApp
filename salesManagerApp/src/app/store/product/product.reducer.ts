@@ -1,6 +1,6 @@
 // reducers/product.reducer.ts
 import { createReducer, on } from '@ngrx/store';
-import { CreateProduct, deleteProduct, editProduct, loadProductList, loadProductListSuccess } from './product.actions';
+import { createProduct, deleteProduct, editProduct, loadProductListSuccess } from './product.actions';
 
 export interface ProductState {
   products: any[];
@@ -12,14 +12,9 @@ const initialState: ProductState = {
 
 export const productReducer = createReducer(
   initialState,
-  on(CreateProduct, (state, { product }) => {
+  on(createProduct, (state, { product }) => {
     return { ...state, products: [...state.products, product] };
   }),
-
-  on(loadProductList, state => ({
-    ...state,
-    loading: true
-  })),
 
   on(loadProductListSuccess, (state, { products }) => ({
     ...state,

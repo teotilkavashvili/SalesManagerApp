@@ -14,6 +14,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table'
 import { CreateManagerComponent } from './create-manager/create-manager.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const route=[
   {
@@ -35,6 +36,7 @@ const route=[
     MatButtonToggleModule,
     MatPaginatorModule,
     MatTableModule,
+    TranslateModule,
     RouterModule.forChild(route)
   ],
   declarations: [

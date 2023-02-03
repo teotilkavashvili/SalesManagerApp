@@ -23,11 +23,11 @@ export class ProductComponent{
   }
   sellProduct(product): void {
     const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        dialogConfig.data = {
-          product
-      };
+     dialogConfig.disableClose = true;
+     dialogConfig.autoFocus = true;
+     dialogConfig.data = {
+       product
+     };
 
     this.dialog.open(ProductSellComponent, dialogConfig);
     const dialogRef = this.dialog.open(ProductSellComponent, dialogConfig);

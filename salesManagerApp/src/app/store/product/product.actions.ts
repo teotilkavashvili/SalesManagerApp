@@ -2,23 +2,24 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from 'src/app/interfaces/product';
 
-export const CreateProduct = createAction(
+export const createProduct = createAction(
   '[Product] Create',
   props<{ product}>()
 );
 
 export const addProductSuccess = createAction(
-    "[Banner] Create Success",
+    "[Product] Create Success",
     props<{ product }>()
 );
 
 export const addProductFailure = createAction(
-    "[Banner] Create Failure",
+    "[Product] Create Failure",
     props<{ error }>()
 );
 
-export const loadProductList = createAction(
-  '[Product] Load List'
+export const loadProducts = createAction(
+  '[ Product] Load  Products',
+  props<{ userId: string }>()
 );
 
 export const loadProductListSuccess = createAction(
@@ -37,7 +38,7 @@ export const editProduct = createAction(
 );
 
 export const editProductSuccess = createAction(
-  "[Banner] edit Success",
+  "[Product] edit Success",
   props<{ product }>()
 );
 

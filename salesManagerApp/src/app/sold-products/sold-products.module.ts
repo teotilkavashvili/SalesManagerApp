@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { ProductsModule } from '../products/products.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes=[
   {
@@ -19,6 +20,7 @@ const routes=[
     RouterModule.forChild(routes),
     // ProductsModule,
     MatButtonModule,
+    TranslateModule
   ],
   declarations: [SoldProductsComponent]
 })

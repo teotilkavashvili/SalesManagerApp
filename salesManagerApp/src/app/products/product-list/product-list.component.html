@@ -1,7 +1,7 @@
 <section class="main-content">
   <div class="actions">
     <button mat-raised-button color="primary" (click)="addProduct()">
-      <mat-icon>add</mat-icon> Add Product
+      <mat-icon>add</mat-icon> {{"Add Product" | translate}}
     </button>
   </div>
 
@@ -36,6 +36,6 @@
   </button>
   <app-product-details [product]="selectedProduct"
                     [isEditMode]="true"
-                    (updateProduct)="getProduct()">
+                    (updateProduct)="getProduct(userId)">
   </app-product-details>
 </section>

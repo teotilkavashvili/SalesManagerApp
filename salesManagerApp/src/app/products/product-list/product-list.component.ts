@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
-import { deleteProduct, editProduct, loadProductList } from 'src/app/store/product/product.actions';
+import { deleteProduct, loadProducts } from 'src/app/store/product/product.actions';
 import { Store } from '@ngrx/store';
 import { ProductState } from 'src/app/store/product/product.reducer';
 import { selectProducts } from 'src/app/store/product/product.selector';
@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
   public pageNumber: number = 1;
   public ProductsTotalAmount = 0;
   public pageSizeOptions: number[] = [4, 20, 25];
+  public userId:string
 
   constructor(
     private store: Store<{ products: ProductState }>
@@ -29,7 +30,10 @@ export class ProductListComponent implements OnInit {
   @ViewChild('paginator') paginator: MatPaginator;
 
   ngOnInit() {
-    this.getProduct();
+    const user = JSON.parse(localStorage.getItem('user') || '{}' );
+    this.userId= user.id;
+    this.getProduct(this.userId);
+
   }
 
   public productTrackBy(index: number, product: Product) {
@@ -38,7 +42,6 @@ export class ProductListComponent implements OnInit {
 
   public editProduct(product: Product): void {
     this.selectedProduct = product;
-    this.store.dispatch(editProduct({ product }));
   }
 
   public addProduct(): void {
@@ -48,8 +51,8 @@ export class ProductListComponent implements OnInit {
   public removeProduct(id: number): void {
     this.store.dispatch(deleteProduct({ id }));
   }
-  public getProduct(){
-    this.store.dispatch(loadProductList());
+  public getProduct(userId){
+    this.store.dispatch(loadProducts({userId:userId}));
     // this.store.dispatch(loadProductList({page:this.pageNumber,pageSize:this.pageSize }));
     this.store.select(selectProducts).subscribe(products => {
       this.products = products;
@@ -70,9 +73,7 @@ export class ProductListComponent implements OnInit {
   }
 
   changeQuantity(){
-    console.log("shemovida");
-    this.getProduct();
-    console.log("gavida");
+    this.getProduct(this.userId);
   }
   
 

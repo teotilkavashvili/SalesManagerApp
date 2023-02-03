@@ -4,12 +4,15 @@ import { NavigationComponent } from './navigation.component';
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    // NavigationRoutingModule
+    TranslateModule,
+    MatButtonModule
   ],
   declarations: [
     NavigationComponent,

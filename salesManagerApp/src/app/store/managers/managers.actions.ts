@@ -3,17 +3,17 @@ import { createAction, props } from '@ngrx/store';
 import { User } from 'src/app/interfaces/user';
 
 export const CreateManager = createAction(
-  '[Product] Create',
+  '[Manager] Create',
   props<{ manager}>()
 );
 
 export const addManagerSuccess = createAction(
-    "[Banner] Create Success",
+    "[Manager] Create Success",
     props<{ manager }>()
 );
 
 export const addManagerFailure = createAction(
-    "[Banner] Create Failure",
+    "[Manager] Create Failure",
     props<{ error }>()
 );
 

@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { SearchComponent } from './search/search.component';
 import { ProductSellComponent } from './product-sell/product-sell.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonToggleModule,
     MatPaginatorModule,
     MatDialogModule,
+    TranslateModule
   ],
   declarations: [
     ProductsComponent,

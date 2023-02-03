@@ -13,8 +13,9 @@ export class ProductService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+  public getAllProducts(userId: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products?userId=${userId}`);
+
   }
 
   // public getAllProducts(page,pageSize): Observable<Product[]> {
@@ -27,37 +28,46 @@ export class ProductService {
   }
 
   public addProduct(product: any): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}/products`, product);
+    return this.http.post<Product>(`${this.baseUrl}/products`, product)
   }
 
   public deleteProduct(productId:any): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/products/${productId}`);
   }
 
-  public sellProduct(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
+  public sellProduct(productId: string, quantity: number, soldQuantity: number, userId: string, price: number): Observable<Product> {
+    return new Observable(observer => {
+      this.updateProductQuantity(productId, quantity, soldQuantity,price).subscribe(product => {
+        this.updateUserTotalIncome(userId,soldQuantity, price).subscribe(user => {
+        });
+      });
+    });
+  }
+
+  public updateProductQuantity(productId: string, quantity: number, soldQuantity: number, price:number): Observable<Product> {
     return this.http.get<Product>(`${this.baseUrl}/products/${productId}`).pipe(
       switchMap(product=>{
         const sumSoldQuantities = Number(product.soldQuantity) + Number(soldQuantity);
-        const totalIncome=Number(price) * Number(soldQuantity);
-        console.log(sumSoldQuantities,totalIncome )
         return this.http.patch<Product>(`${this.baseUrl}/products/${productId}`,{
           quantity: quantity, soldQuantity:sumSoldQuantities
-        }).pipe(
-          
-          switchMap(() => this.http.patch(`${this.baseUrl}/users/${userId}`, { totalIncome: totalIncome }))
-        );
+        })
       })      
     );
+  }
+  
+  public updateUserTotalIncome(userId: string, soldQuantity: number, price: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/users/${userId}`).pipe(
+        switchMap(user=>{
+          const income = Number(price) * Number(soldQuantity);
+          const totalIncome = user.totalIncome  + income ;
+          return this.http.patch<User>(`${this.baseUrl}/users/${userId}`, {totalIncome: totalIncome}
+          )
+        })      
+      );
   }
 
   public getSoldProducts(userId: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/products?userId=${userId}`);
-  }
-
-  public sellProducts(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
-    return this.http.patch(`${this.baseUrl}/products/${productId}`, { quantity: quantity,soldQuantity:soldQuantity }).pipe(
-      switchMap(() => this.http.patch(`${this.baseUrl}/users/${userId}`, { totalIncome: price * quantity }))
-    );
   }
 
 }

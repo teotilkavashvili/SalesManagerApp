@@ -7,15 +7,15 @@
 <ng-template #formTemplate>
   <form [formGroup]="productFormGroup">
     <mat-form-field appearance="outline">
-      <mat-label>Label</mat-label>
+      <mat-label>{{"Label" | translate}}</mat-label>
       <input matInput formControlName="label" />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Price</mat-label>
+      <mat-label>{{"Price" | translate}}</mat-label>
       <input matInput formControlName="price"/>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>quantity</mat-label>
+      <mat-label>{{"Quantity" | translate}}</mat-label>
       <input matInput formControlName="quantity" />
     </mat-form-field>
   </form>
@@ -24,11 +24,11 @@
 <div class="actions">
   <button mat-raised-button color="accent"
           *ngIf="isEditMode; else editBtnTemplate"
-          (click)="saveChanges()">Save</button>
+          (click)="saveChanges()">{{"Save" | translate}}</button>
 
   <ng-template #editBtnTemplate>
     <button mat-raised-button color="accent"
-            (click)="isEditMode = true">Edit</button>
+            (click)="isEditMode = true">{{"Edit" | translate}}</button>
   </ng-template>
 </div>
 

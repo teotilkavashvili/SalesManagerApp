@@ -1,9 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { Component, Inject, NgZone, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/interfaces/product';
 import { HelperService } from 'src/app/services/helper.service';
 import { sellProduct } from 'src/app/store/sell-product//sell-product.actions';
 
@@ -30,20 +28,20 @@ export class ProductSellComponent implements OnInit {
       private formBuilder: FormBuilder,
       private store: Store,
       private dialogRef: MatDialogRef<ProductSellComponent>,
-      @Inject(MAT_DIALOG_DATA) data:any) {
+      @Inject(MAT_DIALOG_DATA) data) {
 
       this.data = data.product
   }
 
   ngOnInit() {
-    const length=this.data.quantity;
-    console.log(length);
-    console.log(this.data);
+    const length = this.data.quantity;
     this.form = this.formBuilder.group({
-      quantity: ['', [Validators.required,
+      quantity: ['', [
+      Validators.required,
       Validators.pattern("^[0-9]*$"),
       Validators.min(0), 
-      Validators.max(10)]]
+      Validators.max(length)
+      ]]
     });
   }
   get f() { return this.form.controls; }
@@ -68,8 +66,8 @@ export class ProductSellComponent implements OnInit {
       userId: this.data.userId, 
       price: this.data.price 
     }));
+
     this.dialogRef.close(this.form.value);
-    this.close();  
   }
 
   close() {

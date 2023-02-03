@@ -7,16 +7,12 @@
               placeholder="quantity"
              formControlName="quantity">
   </mat-form-field>
-  <!-- <div *ngIf="submitted && f['quantity'].errors" class="invalid-feedback">
-    <div *ngIf="f['quantity'].errors['required']">ანგარიშის ნომერი სავალდებულოა</div>
-    <div *ngIf="f['quantity'].errors['pattern']" class="text-danger">ანგარიშის ნომერი შედგება მხოლოდ ციფრებისგან</div>
-  </div> -->
   <div *ngIf="error.quantity">
     {{error.quantity}}
   </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button class="mat-raised-button"(click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+  <button class="mat-raised-button"(click)="close()">{{"Close" | translate}}</button>
+  <button class="mat-raised-button mat-primary"(click)="save()">{{"Save" | translate}}</button>
 </mat-dialog-actions>

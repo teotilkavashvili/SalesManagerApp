@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { take, tap } from 'rxjs/operators';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
-import { CreateProduct } from 'src/app/store/product/product.actions';
+import { createProduct, deleteProduct, editProduct } from 'src/app/store/product/product.actions';
 import {v4 as uuid} from 'uuid';
 
 @Component({
@@ -15,7 +15,8 @@ import {v4 as uuid} from 'uuid';
 export class ProductDetailsComponent implements OnInit {
   @Input() public product: Product;
   @Input() public isEditMode: boolean;
-  userId:number;
+  public userId:number;
+  public isEdit :boolean=false
 
   public productFormGroup: FormGroup;
 
@@ -24,15 +25,33 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private store: Store<Product>,
-    private productService:ProductService
     ) { }
 
   public ngOnInit(): void {
+    if(this.product.id){
+      this.isEdit=true;
+    }
     this.productFormGroup = this.formBuilder.group({
       id: this.product?.id,
-      label: [this.product?.label, Validators.required],
-      price: [this.product?.price,Validators.required],
-      quantity: [this.product?.quantity,Validators.required]
+      label: [this.product?.label, 
+        [
+        Validators.required,
+        Validators.pattern(/^([a-zA-Z]+|[\u10D0-\u10F0]+)$/),
+        ]
+      ],
+      price: [this.product?.price,
+        [
+        Validators.required,
+        Validators.pattern("^[0-9]*$")
+        ]
+      ],
+      quantity: [this.product?.quantity,
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$")
+        ]
+      ], 
+      soldQuantity: this.product?.soldQuantity,
     });
 
     const user = JSON.parse(localStorage.getItem('user') || '{}' );
@@ -45,23 +64,20 @@ export class ProductDetailsComponent implements OnInit {
       return;
     }
     let uniqueId=uuid()
+    let newId=this.product.id? this.product.id : uniqueId
     this.product = {
       ...this.product,
       ...this.productFormGroup.value,
       userId:this.userId,
-      id:uniqueId
+      id:newId
     };
-    
-    const saveTaskMethod = this.product.id ? this.productService.editProduct(this.product) : this.productService.addProduct(this.product);
 
-    saveTaskMethod.pipe(
-      tap(() => {
-        this.isEditMode = false;
-        this.updateProduct.emit(this.product);
-      }),
-      take(1)
-    ).subscribe();
-    this.store.dispatch(CreateProduct({ product: this.product }));
+    const saveTaskMethod = this.isEdit ? 
+    this.store.dispatch(editProduct({ product: this.product })) : 
+    this.store.dispatch(createProduct({ product: this.product }));
+    this.isEditMode = false;
+    this.updateProduct.emit(this.product);
+
   }
 
 }

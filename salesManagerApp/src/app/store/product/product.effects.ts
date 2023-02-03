@@ -1,59 +1,72 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from "rxjs";
-import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
+import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
 import { Product } from "src/app/interfaces/product";
 import { ProductService } from "src/app/services/product.service";
 import { 
+  addProductFailure,
   addProductSuccess, 
-  CreateProduct, 
+  createProduct, 
   deleteProduct, 
   deleteProductError, 
   deleteProductSuccess, 
   editProduct, 
   editProductSuccess, 
-  loadProductList, 
-  loadProductListFailure, 
-  loadProductListSuccess 
+  loadProductListSuccess, 
+  loadProducts
 } 
   from './product.actions';
 
 
 @Injectable()
 export class Productffects {
-  createProduct$ = 
+   createProduct$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(CreateProduct),
-      mergeMap(action =>
-        this.productService.addProduct(action).pipe(
-          map(product => {
-            return addProductSuccess({ product });
-          }),
+      ofType(createProduct),
+      switchMap(({ product }) =>
+        this.productService.addProduct(product).pipe(
+          map(() => addProductSuccess({ product })),
+          catchError(error => of(addProductFailure(error)))
         )
       )
-    );
+    )
+  );
 
-    editProduct$ = 
+  editProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(editProduct),
-      mergeMap(product =>
+      switchMap(({product}) =>
         this.productService.editProduct(product).pipe(
           map(product => {
             return editProductSuccess({ product });
           }),
         )
       )
-    );
+    )
+  );
 
-    loadProductList$ = createEffect(() =>
+  //   loadProductList$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(loadProductList),
+  //     switchMap(() =>
+  //       this.productService.getAllProducts().pipe(
+  //         map((products: Product[]) =>
+  //           loadProductListSuccess({ products })
+  //         ),
+  //         catchError(error => of(loadProductListFailure(error)))
+  //       )
+  //     )
+  //   )
+  // );
+
+  loadProductList$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadProductList),
-      switchMap(() =>
-        this.productService.getAllProducts().pipe(
-          map((products: Product[]) =>
-            loadProductListSuccess({ products })
-          ),
-          catchError(error => of(loadProductListFailure(error)))
+      ofType(loadProducts),
+      switchMap(({ userId }) =>
+        this.productService.getAllProducts(userId).pipe(
+          map((products: Product[]) => loadProductListSuccess({ products })),
+          catchError(error => of(loadProductListSuccess(error )))
         )
       )
     )

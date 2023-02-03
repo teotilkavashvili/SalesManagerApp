@@ -12,25 +12,41 @@
       "id": 2,
       "label": "ipod",
       "price": 300,
-      "quantity": 8,
-      "userId": 1,
-      "soldQuantity": 0
-    },
-    {
-      "id": 3,
-      "label": "Mac Book",
-      "price": "1600",
-      "quantity": 7,
+      "quantity": "16",
       "userId": 1,
       "soldQuantity": 0
     },
     {
       "id": 4,
-      "label": "Air Pads",
-      "price": "200",
-      "quantity": 13,
+      "label": "test",
+      "price": "123",
+      "quantity": 8,
       "userId": 1,
       "soldQuantity": 0
+    },
+    {
+      "id": "fb49c2d9-fa88-4fad-b1b1-9aa81d78edc1",
+      "label": "apple",
+      "price": "88",
+      "quantity": 90,
+      "userId": 1,
+      "soldQuantity": 0
+    },
+    {
+      "id": "4683e6df-9254-45e2-b8ad-1da5a1d4209d",
+      "label": "iphone",
+      "price": "1225",
+      "quantity": 7,
+      "soldQuantity": 8,
+      "userId": 2
+    },
+    {
+      "id": "d9a5abcf-a1b0-4d7e-ad21-1b1031e0e631",
+      "label": "SmartWatch",
+      "price": "500",
+      "quantity": "12",
+      "soldQuantity": null,
+      "userId": 2
     }
   ],
   "users": [
@@ -50,16 +66,16 @@
       "user": "giorgi@gmail.com",
       "password": "12345678",
       "date": "15/01/2023",
+      "totalIncome": 9800
+    },
+    {
+      "id": 3,
+      "name": "test",
+      "surname": "test",
+      "user": "test@gmail.com",
+      "password": "123456",
+      "date": "3/2/2023 18:41:25",
       "totalIncome": 0
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
     }
   ]
 }
