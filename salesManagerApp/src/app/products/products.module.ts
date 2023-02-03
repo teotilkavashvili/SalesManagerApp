@@ -42,6 +42,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     SearchComponent,
     ProductSellComponent
   ],
+  exports: [
+    ProductComponent
+  ],
   entryComponents: [ProductSellComponent],
 })
 export class ProductsModule { }

@@ -4,7 +4,7 @@
       "id": 1,
       "label": "laptop",
       "price": "1200",
-      "quantity": 5,
+      "quantity": 3,
       "userId": 1,
       "soldQuantity": 0
     },
@@ -20,17 +20,17 @@
       "id": 3,
       "label": "Mac Book",
       "price": "1600",
-      "quantity": 16,
+      "quantity": 7,
       "userId": 1,
-      "soldQuantity": 4
+      "soldQuantity": 0
     },
     {
       "id": 4,
       "label": "Air Pads",
       "price": "200",
-      "quantity": 15,
+      "quantity": 13,
       "userId": 1,
-      "soldQuantity": 14
+      "soldQuantity": 0
     }
   ],
   "users": [
@@ -41,7 +41,7 @@
       "user": "teona@gmail.com",
       "password": "12345678",
       "date": "12/01/2023",
-      "totalIncome": 3200
+      "totalIncome": 0
     },
     {
       "id": 2,
@@ -51,15 +51,15 @@
       "password": "12345678",
       "date": "15/01/2023",
       "totalIncome": 0
-    }
-  ],
-  "soldProducts": [
+    },
     {
-      "productId": 1,
-      "userId": 1,
-      "date": "15/01/2023",
-      "quantity": 1,
-      "price": 500
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
     }
   ]
 }

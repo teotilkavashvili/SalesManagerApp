@@ -30,6 +30,11 @@ const routes: Routes = [
         path: ROUTES.MANAGERS, 
         loadChildren: () =>
           import('./managers/managers.module').then(m => m.ManagersModule), 
+          canActivate: [AuthGuard],
+      },
+      {
+        path: 'sold/:userId',
+        loadChildren: () => import('./sold-products/sold-products.module').then(m => m.SoldProductsModule),
       },
     ],
   },

@@ -10,7 +10,7 @@ import { sellProduct } from 'src/app/store/sell-product//sell-product.actions';
 @Component({
   selector: 'app-product-sell',
   templateUrl: './product-sell.component.html',
-  styleUrls: ['./product-sell.component.css']
+  styleUrls: ['./product-sell.component.scss']
 })
 export class ProductSellComponent implements OnInit {
 
@@ -23,8 +23,7 @@ export class ProductSellComponent implements OnInit {
     errorMessage: "",
     quantity: "",
   };
-
-  product$: Observable<Product>;
+  
   quantity = 0;
 
   constructor(
@@ -46,8 +45,6 @@ export class ProductSellComponent implements OnInit {
       Validators.min(0), 
       Validators.max(10)]]
     });
-
-    // this.product$ = this.store.select(fromRoot.getSelectedProduct);
   }
   get f() { return this.form.controls; }
 
@@ -64,9 +61,15 @@ export class ProductSellComponent implements OnInit {
     const soldQuantity=this.form.controls['quantity'].value;
     const remainingAmount=this.data.quantity-soldQuantity
 
-    this.store.dispatch(sellProduct({ productId: this.data.id, quantity:remainingAmount, soldQuantity: soldQuantity, userId: this.data.userId, price: this.data.price }));
+    this.store.dispatch(sellProduct({ 
+      productId: this.data.id, 
+      quantity:remainingAmount, 
+      soldQuantity: soldQuantity, 
+      userId: this.data.userId, 
+      price: this.data.price 
+    }));
     this.dialogRef.close(this.form.value);
-  
+    this.close();  
   }
 
   close() {

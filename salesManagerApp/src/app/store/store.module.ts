@@ -10,6 +10,8 @@ import { managerefects } from './managers/managers.effects';
 import { managerReducer } from './managers/managers.reducer';
 import { sellProductReducer } from './sell-product/sell-product.reducer';
 import { SellProductEffects } from './sell-product/sell-product.effects';
+import { soldProductsReducer } from './sold-products/sold-products.reducer';
+import { SoldProductEffects } from './sold-products/sold-products.effects';
 
 
 
@@ -22,12 +24,14 @@ import { SellProductEffects } from './sell-product/sell-product.effects';
       product: productReducer,
       manager:managerReducer,
       sellProduct:sellProductReducer,
+      soldProducts:soldProductsReducer,
     }),
     EffectsModule.forRoot([
       Loginffects,
       Productffects,
       managerefects,
-      SellProductEffects
+      SellProductEffects,
+      SoldProductEffects
     ]),
   ]
 })

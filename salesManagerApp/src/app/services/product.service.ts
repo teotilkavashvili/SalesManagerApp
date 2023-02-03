@@ -50,7 +50,11 @@ export class ProductService {
     );
   }
 
-  sellProducts(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
+  public getSoldProducts(userId: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products?userId=${userId}`);
+  }
+
+  public sellProducts(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
     return this.http.patch(`${this.baseUrl}/products/${productId}`, { quantity: quantity,soldQuantity:soldQuantity }).pipe(
       switchMap(() => this.http.patch(`${this.baseUrl}/users/${userId}`, { totalIncome: price * quantity }))
     );

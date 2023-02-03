@@ -1,0 +1,41 @@
+<section class="main-content">
+    <div class="actions">
+        <a [routerLink]="['/', routes.MANAGERS]">Go to List</a>
+    </div>
+<!-- <app-product *ngIf="products"></app-product>  -->
+<div class="product" *ngIf="products">
+    <ng-container  *ngFor="let product of products">
+        <div class="product-info" >
+            <div>
+                <span class="name">{{product.label | uppercase}}</span>
+                <div class="price">
+                  <span>Price: </span>
+                  {{product.price}} 
+                  <span>$</span>
+                </div>
+            </div>
+            <div>
+                <div class="quantity">
+                    <span>Quantity: </span>
+                    {{product.quantity}} 
+                  </div>
+                  <div class="quantity soldQuantity">
+                    <span>Sold Quantity: </span>
+                    {{product.soldQuantity}} 
+                  </div>
+            </div>  
+            <div class="quantity total-income">
+                <span>Total Income: </span>
+                <div>
+                    {{product.soldQuantity * product.price}}
+                </div>
+
+            </div>       
+        </div>
+        
+    </ng-container>
+
+</div>
+
+
+</section>

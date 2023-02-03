@@ -20,8 +20,4 @@ export class SalesManagerService {
     return this.http.post<User>(`${this.baseUrl}/users`, manager);
   }
 
-  public updateUserTotalIncome(userId: number, totalIncome: number) {
-    return this.http.patch<User>(`${this.baseUrl}/users/${userId}`, { totalIncome });
-  }
-
 }

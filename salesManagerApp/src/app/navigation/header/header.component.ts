@@ -22,11 +22,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.lang = localStorage.getItem('lang') || 'en';
     this.translateService.use(this.lang);
-  console.log(this.authenticatedUser$);
     this.store.select(state=>state.user).subscribe(
       user=>{
         this.user=user
-        console.log(this.user)
       }
     )
     const user = JSON.parse(localStorage.getItem('user') || '{}' );
@@ -44,7 +42,6 @@ export class HeaderComponent implements OnInit {
 
   changeLang(event){
     const lang = event;
-    console.log(lang);
     localStorage.setItem('lang', lang);
     window.location.reload();
   }

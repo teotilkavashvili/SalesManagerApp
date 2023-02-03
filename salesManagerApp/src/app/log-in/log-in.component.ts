@@ -18,7 +18,6 @@ export class LogInComponent implements OnInit {
   isLanguage(lang: String) {
     const defaultLang = this.translateService.defaultLang;
     const currentLanguage = this.translateService.currentLang;
-
     return currentLanguage ? currentLanguage == lang : defaultLang == lang;
   }
 

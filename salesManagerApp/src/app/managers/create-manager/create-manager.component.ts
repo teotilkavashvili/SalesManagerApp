@@ -43,6 +43,7 @@ export class CreateManagerComponent implements OnInit {
       ...this.manager,
       ...this.managerFormGroup.value,
       date: this.managerFormGroup.value.date =HelperService.dateFormater(new Date()),
+      totalIncome:0
     };
 
     this.updateManager.emit(this.manager);

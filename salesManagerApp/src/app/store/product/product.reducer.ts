@@ -21,14 +21,6 @@ export const productReducer = createReducer(
     loading: true
   })),
 
-  // on(loadProductListSuccess, (state, { products, total }) => ({
-  //   ...state,
-  //   products,
-  //   total,
-  //   loading: false,
-  //   error: null
-  // })),
-
   on(loadProductListSuccess, (state, { products }) => ({
     ...state,
     products,

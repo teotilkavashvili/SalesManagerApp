@@ -15,6 +15,7 @@ import {v4 as uuid} from 'uuid';
 export class ProductDetailsComponent implements OnInit {
   @Input() public product: Product;
   @Input() public isEditMode: boolean;
+  userId:number;
 
   public productFormGroup: FormGroup;
 
@@ -33,6 +34,9 @@ export class ProductDetailsComponent implements OnInit {
       price: [this.product?.price,Validators.required],
       quantity: [this.product?.quantity,Validators.required]
     });
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}' );
+      this.userId=user.id
   }
 
   public saveChanges(): void {
@@ -40,13 +44,14 @@ export class ProductDetailsComponent implements OnInit {
       this.productFormGroup.markAllAsTouched();
       return;
     }
-
+    let uniqueId=uuid()
     this.product = {
       ...this.product,
       ...this.productFormGroup.value,
-      done: this.productFormGroup.value.done ? this.product || new Date().toString() : false,
+      userId:this.userId,
+      id:uniqueId
     };
-    let id=uuid()
+    
     const saveTaskMethod = this.product.id ? this.productService.editProduct(this.product) : this.productService.addProduct(this.product);
 
     saveTaskMethod.pipe(
@@ -56,7 +61,6 @@ export class ProductDetailsComponent implements OnInit {
       }),
       take(1)
     ).subscribe();
-    console.log(this.product);
     this.store.dispatch(CreateProduct({ product: this.product }));
   }
 

@@ -34,7 +34,6 @@ export class LogInFormComponent implements OnInit {
     private router: Router,
     private store: Store,
     private loginService: AuthService,
-    private helperService:HelperService,
   ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -45,17 +44,14 @@ export class LogInFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // console.log(this.router.url);   
+  ngOnInit() {  
     this.loginForm.valueChanges.subscribe((option) => {
-      // console.log(option)
       if(this.submitted){
         this.checkErrors();
       }
       if (option.email && !this.error.email) {
         this.changeIcons("email", "green");
       }
-
       if (option.password && !this.error.password) {
         this.changeIcons("password", "green");
       }
@@ -83,10 +79,8 @@ export class LogInFormComponent implements OnInit {
     this.store.dispatch(login({ user: this.loginForm.value.email, password: this.loginForm.value.password }));
     // this.store.select(isLoggedIn).subscribe(loggedIn => {
     //   if (loggedIn) {
-    //     console.log(loggedIn);
     //     this.router.navigate(['/products']);
     //   }else {
-    //     console.log(loggedIn);
     //     alert('Incorrect user or password');
     //   }
     // });
@@ -94,15 +88,14 @@ export class LogInFormComponent implements OnInit {
       (isLoggedIn) => {
       if (isLoggedIn) {
         this.router.navigate(['/products']);
+      }else {
+        alert('Incorrect user or password');
       }
     });
-    
-
   }
 
   onChangeFormValue(options:any): void {
     this.loginForm.patchValue({ [options.name]: options.value });
-    // console.log(" change value",options);
   }
 
   changeIcons(option: string, color: string): void {

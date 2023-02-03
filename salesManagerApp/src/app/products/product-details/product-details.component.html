@@ -1,9 +1,7 @@
 <div class="details-content" *ngIf="!isEditMode; else formTemplate">
   <h1>{{product?.label}}</h1>
-
   <p>{{product?.price}}</p>
   <p>{{product?.quantity}}</p>
-
 </div>
 
 <ng-template #formTemplate>

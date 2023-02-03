@@ -21,16 +21,6 @@ import {
 
 @Injectable()
 export class Productffects {
- 
-//   createProduct$ = this.actions$.pipe(
-//     ofType<CreateProduct>(ProductActionTypes.CreateProduct),
-//     mergeMap(action =>
-//       this.productService.addProduct(action.payload.product).pipe(
-//         map(product => new CreateProductSuccess({ product })),
-//         catchError(error => of(new CreateProductFail({ error })))
-//       )
-//     )
-//   );
   createProduct$ = 
     this.actions$.pipe(
       ofType(CreateProduct),
@@ -68,20 +58,6 @@ export class Productffects {
       )
     )
   );
-
-//   loadProductList$ = createEffect(() =>
-//   this.actions$.pipe(
-//     ofType(loadProductList),
-//     switchMap(action =>
-//       this.productService.getAllProducts(action.page, action.pageSize).pipe(
-//         map((products, total) =>
-//           loadProductListSuccess({ products, total })
-//         ),
-//         // catchError(error => of(loadProductListFailure(error)))
-//       )
-//     )
-//   )
-// );
     
     deleteProduct$ = createEffect(() =>
     this.actions$.pipe(

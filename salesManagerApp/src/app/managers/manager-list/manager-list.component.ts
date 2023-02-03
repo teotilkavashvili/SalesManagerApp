@@ -3,13 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { select, Store } from '@ngrx/store';
 import { User } from 'src/app/interfaces/user';
+import { ROUTES } from 'src/app/routes';
 import { loadManagers, ManagerState, selectManagers } from 'src/app/store/managers';
 // import { userState } from 'src/app/store/managers/managers.reducer';
 
 @Component({
   selector: 'app-manager-list',
   templateUrl: './manager-list.component.html',
-  styleUrls: ['./manager-list.component.css']
+  styleUrls: ['./manager-list.component.scss']
 })
 export class ManagerListComponent implements OnInit {
   managers: User[]=[];
@@ -19,6 +20,7 @@ export class ManagerListComponent implements OnInit {
   dataManagerSource = new MatTableDataSource<User>([]);
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  public readonly routes: typeof ROUTES = ROUTES;
 
   constructor(
     private store: Store<ManagerState>

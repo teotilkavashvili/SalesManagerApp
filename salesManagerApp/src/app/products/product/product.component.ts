@@ -21,7 +21,6 @@ export class ProductComponent{
   public ngOnInit(): void {
          
   }
-
   sellProduct(product): void {
     const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
@@ -32,12 +31,11 @@ export class ProductComponent{
 
     this.dialog.open(ProductSellComponent, dialogConfig);
     const dialogRef = this.dialog.open(ProductSellComponent, dialogConfig);
-
+    
     dialogRef.afterClosed().subscribe((data: any) => {
         this.changeQuantity.emit();
       }        
     ); 
-
   }
 
 }

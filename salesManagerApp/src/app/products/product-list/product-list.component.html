@@ -10,9 +10,7 @@
       <app-search
         (outPutKeyword)="onSearchTask($event)"
       ></app-search>
-      <!-- <app-filters (changeFilters)="setFilteredTasks($event)"></app-filters> -->
     </div>
-
     <div  class="product">
       <app-product *ngFor="let product of products; trackBy: productTrackBy"
         (editProduct)="editProduct(product)"
@@ -28,10 +26,7 @@
       [pageSizeOptions]="pageSizeOptions"
       (page)="onPageChanged($event)">
       </mat-paginator>
-    </div>
-    
-
-    
+    </div>   
   </div>
 </section>
 

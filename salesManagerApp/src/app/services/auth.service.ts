@@ -29,7 +29,7 @@ export class AuthService {
 
   public loginn(user: string, password: string) {
     console.log("Shemovida")
-    return this.http.get<any>('http://localhost:3000/users').pipe(
+    return this.http.get<any>(`${this.baseUrl}/users`).pipe(
       map(response => {
         const userFound = response.find(u => u.user === user && u.password === password);
         if (userFound) {
@@ -55,7 +55,7 @@ export class AuthService {
   }
 
   public login(user: string, password: string): Observable<any> {
-    return this.http.get('http://localhost:3000/users')
+    return this.http.get(`${this.baseUrl}/users`)
       .pipe(
         map((users: any[]) => users.find(u => u.user === user && u.password === password))
       );
