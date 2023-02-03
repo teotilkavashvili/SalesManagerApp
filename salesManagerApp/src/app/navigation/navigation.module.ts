@@ -14,7 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
   declarations: [
     NavigationComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
+    
   ],
   exports:[
     NavigationComponent,

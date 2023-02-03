@@ -17,6 +17,7 @@
       <app-product *ngFor="let product of products; trackBy: productTrackBy"
         (editProduct)="editProduct(product)"
         (removeProduct)="removeProduct(product.id)"
+        (changeQuantity)="changeQuantity()"
         [product]="product">
       </app-product>
     </div>

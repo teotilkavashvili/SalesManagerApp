@@ -68,6 +68,12 @@ export class ProductListComponent implements OnInit {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
   }
+
+  changeQuantity(){
+    console.log("shemovida");
+    this.getProduct();
+    console.log("gavida");
+  }
   
 
 }

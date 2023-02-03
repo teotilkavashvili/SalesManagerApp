@@ -11,7 +11,7 @@ import { ProductSellComponent } from '../product-sell/product-sell.component';
 export class ProductComponent{
   @Input() public product: Product;
   @Output() public editProduct: EventEmitter<void> = new EventEmitter<void>();
-  @Output() public changeStatus: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public changeQuantity: EventEmitter<void> = new EventEmitter<void>();
   @Output() public removeProduct: EventEmitter<void> = new EventEmitter<void>();
   quantity:number
 
@@ -24,24 +24,20 @@ export class ProductComponent{
 
   sellProduct(product): void {
     const dialogConfig = new MatDialogConfig();
-
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
         dialogConfig.data = {
           product
       };
 
-        this.dialog.open(ProductSellComponent, dialogConfig);
-    console.log(product)
-    // const dialogRef = this.dialog.open(ProductSellComponent, {
-    //   width: '250px',
-    //   data: { animal: this.quantity}
-    // });
+    this.dialog.open(ProductSellComponent, dialogConfig);
+    const dialogRef = this.dialog.open(ProductSellComponent, dialogConfig);
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   console.log(result);
-    // });
+    dialogRef.afterClosed().subscribe((data: any) => {
+        this.changeQuantity.emit();
+      }        
+    ); 
+
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { logout } from 'src/app/store/login/login.actions';
 import { LoginState } from 'src/app/store/login/login.reducer';
 
@@ -12,11 +13,15 @@ export class HeaderComponent implements OnInit {
   showDropDown: boolean = false;
   authenticatedUser$ = this.store.select(state => state.loggedIn);
   user:any ;
+  lang:string
   
 
-  constructor(private store: Store<LoginState>) { }
+  constructor(private store: Store<LoginState>,
+    private translateService: TranslateService,) { }
 
   ngOnInit() {
+    this.lang = localStorage.getItem('lang') || 'en';
+    this.translateService.use(this.lang);
   console.log(this.authenticatedUser$);
     this.store.select(state=>state.user).subscribe(
       user=>{
@@ -35,6 +40,13 @@ export class HeaderComponent implements OnInit {
   signOut(){
     this.store.dispatch(logout());
     this.showDropDown = !this.showDropDown;
+  }
+
+  changeLang(event){
+    const lang = event;
+    console.log(lang);
+    localStorage.setItem('lang', lang);
+    window.location.reload();
   }
 
 }

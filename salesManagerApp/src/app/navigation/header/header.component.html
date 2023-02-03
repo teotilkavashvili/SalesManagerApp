@@ -1,4 +1,18 @@
-<div class="profile_box" >     
+<div class="profile_box" > 
+    <div class="langBtns">
+            <button  
+              mat-fab extended
+              [class.active]="lang === 'ka'"
+              (click)="changeLang('ka')">
+                  {{"GE" }}
+            </button>
+            <button 
+              mat-fab extended
+              [class.active]="lang === 'en'"
+              (click)="changeLang('en')">
+                  {{"EN" }}
+            </button>
+          </div>    
       <div class="profile_img" >
         <img src="/assets/images/avatar.png" alt="">
       </div>     
@@ -11,6 +25,7 @@
                   class="profile_name_icon"
                   [class.profile_name_icon-rotate]="showDropDown">
           </div>
+          
           <div class="profile_dropdown" [class.profile_dropdown-show]="showDropDown">
               <!-- <div class="profile_dropdown_item" >
                   <img src="/assets/images/setting.svg">

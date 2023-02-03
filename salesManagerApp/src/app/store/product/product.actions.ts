@@ -31,21 +31,6 @@ export const loadProductListFailure = createAction(
   props<{ error: any }>()
 );
 
-// export const loadProductList = createAction(
-//   '[Product] Load Product List',
-//   props<{ page: number, pageSize: number }>()
-// );
-
-// export const loadProductListSuccess = createAction(
-//   '[Product] Load Product List Success',
-//   props<{ products: Product[], total: number }>()
-// );
-
-// export const loadProductListFail = createAction(
-//   '[Product] Load Product List Fail',
-//   props<{ error: any }>()
-// );
-
 export const editProduct = createAction(
   '[Product] Edit',
   props<{ product: Product }>()

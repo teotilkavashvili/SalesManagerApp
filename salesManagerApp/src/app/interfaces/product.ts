@@ -3,5 +3,7 @@ export interface Product {
   label: string;
   price: number;
   quantity: number;
+  soldQuantity: number;
+  userId: number;
 }
 

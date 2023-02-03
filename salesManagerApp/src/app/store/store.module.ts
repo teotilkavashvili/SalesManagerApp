@@ -8,6 +8,8 @@ import { productReducer } from './product/product.reducer';
 import { Productffects } from './product/product.effects';
 import { managerefects } from './managers/managers.effects';
 import { managerReducer } from './managers/managers.reducer';
+import { sellProductReducer } from './sell-product/sell-product.reducer';
+import { SellProductEffects } from './sell-product/sell-product.effects';
 
 
 
@@ -18,12 +20,14 @@ import { managerReducer } from './managers/managers.reducer';
     StoreModule.forRoot({
       login: loginReducer,
       product: productReducer,
-      manager:managerReducer
+      manager:managerReducer,
+      sellProduct:sellProductReducer,
     }),
     EffectsModule.forRoot([
       Loginffects,
       Productffects,
-      managerefects
+      managerefects,
+      SellProductEffects
     ]),
   ]
 })

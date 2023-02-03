@@ -5,5 +5,5 @@ export interface User {
     user: string,
     password: string,
     date:Date,
-    totalSum:number
+    totalIncome:number
 }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../interfaces/product';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,28 @@ export class ProductService {
 
   public deleteProduct(productId:any): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/products/${productId}`);
+  }
+
+  public sellProduct(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
+    return this.http.get<Product>(`${this.baseUrl}/products/${productId}`).pipe(
+      switchMap(product=>{
+        const sumSoldQuantities = Number(product.soldQuantity) + Number(soldQuantity);
+        const totalIncome=Number(price) * Number(soldQuantity);
+        console.log(sumSoldQuantities,totalIncome )
+        return this.http.patch<Product>(`${this.baseUrl}/products/${productId}`,{
+          quantity: quantity, soldQuantity:sumSoldQuantities
+        }).pipe(
+          
+          switchMap(() => this.http.patch(`${this.baseUrl}/users/${userId}`, { totalIncome: totalIncome }))
+        );
+      })      
+    );
+  }
+
+  sellProducts(productId: string, quantity: number, soldQuantity:number, userId: string, price: number) {
+    return this.http.patch(`${this.baseUrl}/products/${productId}`, { quantity: quantity,soldQuantity:soldQuantity }).pipe(
+      switchMap(() => this.http.patch(`${this.baseUrl}/users/${userId}`, { totalIncome: price * quantity }))
+    );
   }
 
 }

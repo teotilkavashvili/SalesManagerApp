@@ -1,0 +1,15 @@
+table{
+    width: 100%;
+    
+}
+
+mat-form-field{
+    width: 180px !important;
+    padding:5px;
+    
+}
+
+img{
+    margin-left:20px;
+    cursor: pointer;
+}
