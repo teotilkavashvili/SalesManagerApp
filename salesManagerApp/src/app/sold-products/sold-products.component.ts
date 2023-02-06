@@ -24,13 +24,9 @@ export class SoldProductsComponent implements OnInit {
 
   ngOnInit() {
     const id:any = +this.route.snapshot.paramMap.get('userId');
-    console.log(id);
-    console.log("sold component")
     this.store.dispatch(loadSoldProducts({userId:id}));
     this.store.select(getSoldProducts).subscribe(Products => {
       this.products=Products.filter(product => product.soldQuantity > 0);
-      console.log(Products),
-      console.log(this.products);
       // this.router.navigate(['/sold'])
     });
   }

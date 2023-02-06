@@ -47,7 +47,6 @@ export class CreateManagerComponent implements OnInit {
     };
 
     this.updateManager.emit(this.manager);
-    console.log(this.manager);
     this.store.dispatch(CreateManager({ manager: this.manager }));
   }
 

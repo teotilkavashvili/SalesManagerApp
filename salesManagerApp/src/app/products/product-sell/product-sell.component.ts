@@ -28,7 +28,8 @@ export class ProductSellComponent implements OnInit {
       private formBuilder: FormBuilder,
       private store: Store,
       private dialogRef: MatDialogRef<ProductSellComponent>,
-      @Inject(MAT_DIALOG_DATA) data) {
+      @Inject(MAT_DIALOG_DATA) data
+  ) {
 
       this.data = data.product
   }
@@ -48,7 +49,6 @@ export class ProductSellComponent implements OnInit {
 
   checkErrors(){
     this.error = HelperService.checkValidation(this.form,{password:'Password'});
-    console.log(this.error);
   }
 
   save() {

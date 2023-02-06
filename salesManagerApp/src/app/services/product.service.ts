@@ -19,7 +19,6 @@ export class ProductService {
   }
 
   // public getAllProducts(page,pageSize): Observable<Product[]> {
-  //   console.log("shemovidaaaa");
   //   return this.http.get<Product[]>(`${this.baseUrl}/products?_page=${page}&_limit=${pageSize}`);
   // }
 

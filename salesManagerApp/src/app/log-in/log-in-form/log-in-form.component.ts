@@ -84,7 +84,7 @@ export class LogInFormComponent implements OnInit {
     //     alert('Incorrect user or password');
     //   }
     // });
-    this.loginService.loginn(this.loginForm.value.email,this.loginForm.value.password ).subscribe(
+    this.loginService.logIn(this.loginForm.value.email,this.loginForm.value.password ).subscribe(
       (isLoggedIn) => {
       if (isLoggedIn) {
         this.router.navigate(['/products']);

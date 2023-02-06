@@ -8,28 +8,16 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class Loginffects {
-//   login$ = createEffect(() =>
-//     this.actions$.pipe(
-//       ofType(login),
-//       mergeMap(({user, password}) => this.loginService.login(user, password).pipe(
-//         map(({user}) => loginSuccess({user})),
-//         catchError(error => of(loginFailure({error})))
-//       ))
-//     )
-//   );
-
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(login),
       mergeMap(action =>
         this.loginService.login(action.user, action.password).pipe(
           map(res => {
-            console.log(res);
             if(res){
-                return  loginSuccess({user:res});
-            }  else{
-                
-                return  loginFailure({error:"Invalid username or password"});
+              return  loginSuccess({user:res});
+            }else{
+              return  loginFailure({error:"Invalid username or password"});
             }          
           }),
           tap(res=>{

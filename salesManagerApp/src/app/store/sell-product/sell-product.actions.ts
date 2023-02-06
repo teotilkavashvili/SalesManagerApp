@@ -1,19 +1,3 @@
-// import { createAction, props } from '@ngrx/store';
-
-
-// export const sellProduct = createAction(
-//   '[Sell Product] Sell Product',
-//   props<{ productId: string; quantity: number; userId: string; price: number }>()
-// );
-
-
-
-// export const SellProductActions = {
-//   sellProduct,
-//   sellProductSuccess,
-//   sellProductFailure
-// };
-
 import { createAction, props } from '@ngrx/store';
 
 export const sellProduct = createAction(

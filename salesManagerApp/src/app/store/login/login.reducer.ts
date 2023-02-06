@@ -17,7 +17,6 @@ export const initialState: LoginState = {
 export const loginReducer = createReducer(
     initialState,
     on(login, (state, { user, password }) => {
-        console.log(state);
         return {
             ...state,
         };

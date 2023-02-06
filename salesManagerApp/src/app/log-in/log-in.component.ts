@@ -23,14 +23,12 @@ export class LogInComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(localStorage.getItem('lang'));
     this.lang = localStorage.getItem('lang') || 'en';
     this.translateService.use(this.lang);
   }
 
   changeLang(event){
     const lang = event;
-    console.log(lang);
     localStorage.setItem('lang', lang);
     window.location.reload();
   }

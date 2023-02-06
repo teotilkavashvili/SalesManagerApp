@@ -13,7 +13,7 @@ export class ProductComponent{
   @Output() public editProduct: EventEmitter<void> = new EventEmitter<void>();
   @Output() public changeQuantity: EventEmitter<void> = new EventEmitter<void>();
   @Output() public removeProduct: EventEmitter<void> = new EventEmitter<void>();
-  quantity:number
+  public quantity:number
 
   constructor(public dialog: MatDialog) { }
 

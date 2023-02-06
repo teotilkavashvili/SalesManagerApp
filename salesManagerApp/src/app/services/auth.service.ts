@@ -27,8 +27,7 @@ export class AuthService {
   }
 
 
-  public loginn(user: string, password: string) {
-    console.log("Shemovida")
+  public logIn(user: string, password: string) {
     return this.http.get<any>(`${this.baseUrl}/users`).pipe(
       map(response => {
         const userFound = response.find(u => u.user === user && u.password === password);
@@ -58,13 +57,6 @@ export class AuthService {
     return this.http.get(`${this.baseUrl}/users`)
       .pipe(
         map((users: any[]) => users.find(u => u.user === user && u.password === password))
-      );
-  }
-
-  public logIn(user: string, password: string) {
-    return this.http.get<any[]>(`${this.baseUrl}/users`)
-      .pipe(
-        map(users => users.find(u => u.user === user && u.password === password))
       );
   }
 

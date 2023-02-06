@@ -33,17 +33,12 @@ export class ManagerListComponent implements OnInit {
   public getManagers(){
     this.store.dispatch(loadManagers());
     this.store.select(selectManagers).subscribe(managers => {
-      console.log(managers);
       this.managers = managers;
       this.dataManagerSource = new MatTableDataSource<User>(
                   this.managers
       );
       setTimeout(() => this.dataManagerSource.paginator = this.paginator);
     });
-  }
-  checkCards(customer){
-    console.log(customer)
-
   }
 
   applyFilter(event) {
