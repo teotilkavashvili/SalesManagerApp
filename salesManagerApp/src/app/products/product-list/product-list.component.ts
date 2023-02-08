@@ -6,7 +6,6 @@ import { ProductState } from 'src/app/store/product/product.reducer';
 import { selectProducts } from 'src/app/store/product/product.selector';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -16,16 +15,15 @@ export class ProductListComponent implements OnInit {
   public products: Product[] = [];
   public selectedProduct: Product;
   public allProducts: Product[] = [];
-  // products$ = this.store.select(selectProducts);
-  public pageSize: number = 4;
+  public itemsPerPage : number = 4;
   public pageNumber: number = 1;
   public ProductsTotalAmount = 0;
   public pageSizeOptions: number[] = [4, 10, 20];
-  public userId:string
+  public userId:string;
 
   constructor(
     private store: Store<{ products: ProductState }>
-  ) { }
+  ) {   }
 
   @ViewChild('paginator') paginator: MatPaginator;
 
@@ -68,8 +66,9 @@ export class ProductListComponent implements OnInit {
   }
 
   onPageChanged(event: PageEvent): void {
-    this.pageSize = event.pageSize;
+    this.itemsPerPage = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
+    this.getPageProducts(this.pageNumber);
   }
 
   changeQuantity(){
@@ -78,7 +77,12 @@ export class ProductListComponent implements OnInit {
   
   updateProduct(){
     this.selectedProduct=null;
-
   }
 
+  getPageProducts(page: number) {
+    this.pageNumber = page;
+    const startIndex = (page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.products.slice(startIndex, endIndex);
+  }
 }

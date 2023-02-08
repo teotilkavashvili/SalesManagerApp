@@ -8,6 +8,7 @@ import { ButtonModule } from '../sharedComponents/button/button.module';
 import { TranslateModule } from '@ngx-translate/core'; 
 import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { SharedDirectivesModule } from '../shared-directives/shared-directives.module';
 
 const route=[{
   path: '',
@@ -24,6 +25,7 @@ const route=[{
     ButtonModule,
     TranslateModule,
     MatButtonModule,
+    SharedDirectivesModule,
     RouterModule.forChild(route)
   ],
   declarations: [
