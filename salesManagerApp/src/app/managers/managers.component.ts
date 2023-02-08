@@ -26,7 +26,7 @@ export class ManagersComponent implements OnInit {
   }
   
   public getManagers(){
-
+    this.manager=null
   }
 
 }

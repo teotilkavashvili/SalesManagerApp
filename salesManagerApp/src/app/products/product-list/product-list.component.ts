@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
   public pageSize: number = 4;
   public pageNumber: number = 1;
   public ProductsTotalAmount = 0;
-  public pageSizeOptions: number[] = [4, 20, 25];
+  public pageSizeOptions: number[] = [4, 10, 20];
   public userId:string
 
   constructor(
@@ -76,5 +76,9 @@ export class ProductListComponent implements OnInit {
     this.getProduct(this.userId);
   }
   
+  updateProduct(){
+    this.selectedProduct=null;
+
+  }
 
 }

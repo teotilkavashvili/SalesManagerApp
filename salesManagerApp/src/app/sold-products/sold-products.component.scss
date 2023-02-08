@@ -60,10 +60,10 @@
   padding: 30px;
   color: $dark-color;
   position: relative;
-  height: 160px;
   background: #FFFFFF;
   border-radius: 8px;
   width: 100%;
+  height: auto;
   
 
   .name {
@@ -95,6 +95,7 @@
     background-color: $error-color;
     color:$white-color;
     font-weight: bold;
+    margin-top: 10px;
   }
 }
 

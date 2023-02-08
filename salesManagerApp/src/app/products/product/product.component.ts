@@ -15,27 +15,25 @@ export class ProductComponent{
   @Output() public removeProduct: EventEmitter<void> = new EventEmitter<void>();
   public quantity:number
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+  ) { }
 
   // public readonly routes: typeof ApplicationRoutes = ApplicationRoutes;
   public ngOnInit(): void {
          
   }
   sellProduct(product): void {
-    const dialogConfig = new MatDialogConfig();
-     dialogConfig.disableClose = true;
-     dialogConfig.autoFocus = true;
-     dialogConfig.data = {
-       product
-     };
-
-    this.dialog.open(ProductSellComponent, dialogConfig);
-    const dialogRef = this.dialog.open(ProductSellComponent, dialogConfig);
-    
-    dialogRef.afterClosed().subscribe((data: any) => {
+    const dialogRef = this.dialog.open(ProductSellComponent, {
+      width: '250px',
+      data: product,
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe(() => {
+        console.log("gaiyida")
         this.changeQuantity.emit();
-      }        
-    ); 
+      });
   }
 
 }

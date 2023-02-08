@@ -2,6 +2,7 @@ import { Component, Inject, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { Product } from 'src/app/interfaces/product';
 import { HelperService } from 'src/app/services/helper.service';
 import { sellProduct } from 'src/app/store/sell-product//sell-product.actions';
 
@@ -28,10 +29,10 @@ export class ProductSellComponent implements OnInit {
       private formBuilder: FormBuilder,
       private store: Store,
       private dialogRef: MatDialogRef<ProductSellComponent>,
-      @Inject(MAT_DIALOG_DATA) data
+      @Inject(MAT_DIALOG_DATA) prodData
   ) {
-
-      this.data = data.product
+      console.log(prodData)
+      this.data = prodData
   }
 
   ngOnInit() {
@@ -66,11 +67,10 @@ export class ProductSellComponent implements OnInit {
       userId: this.data.userId, 
       price: this.data.price 
     }));
-
-    this.dialogRef.close(this.form.value);
+    this.close();
   }
 
-  close() {
+  close():void {
       this.dialogRef.close();
   }
 

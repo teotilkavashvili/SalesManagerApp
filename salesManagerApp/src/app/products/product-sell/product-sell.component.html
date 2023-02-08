@@ -1,18 +1,15 @@
-
-
-<mat-dialog-content [formGroup]="form">  
-  <mat-form-field
- >
-      <input matInput
-              placeholder="{{'Quantity'| translate}}"
-             formControlName="quantity">
-  </mat-form-field>
-  <div *ngIf="error.quantity">
-    {{error.quantity}}
-  </div>
-
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button class="mat-raised-button"(click)="close()">{{"Close" | translate}}</button>
-  <button class="mat-raised-button mat-primary"(click)="save()">{{"Save" | translate}}</button>
-</mat-dialog-actions>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{"Quantity" | translate}}</mat-label>
+        <input matInput formControlName="quantity" />
+      </mat-form-field>
+      <div *ngIf="error.quantity">
+        {{error.quantity}}
+      </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()" >{{"Close" | translate}}</button>
+  <button mat-raised-button color="primary" (click)="save()">{{"Save" | translate}}</button>
+</div>

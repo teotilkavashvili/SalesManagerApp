@@ -13,6 +13,7 @@
   </div>
   <button  mat-flat-button color="primary"
           (click)="sellProduct(product)"
+          [disabled]="product.quantity==0"
           >
         {{"sell product" | translate}}
   </button>

@@ -13,7 +13,16 @@ import { CreateManager } from 'src/app/store/managers/managers.actions';
 export class CreateManagerComponent implements OnInit {
 
   public managerFormGroup: FormGroup;
-  public manager:Manager;
+  public manager: Manager;
+  public submitted: boolean = false;
+
+  error: any = {
+    errorMessage: "",
+    user: "",
+    password: "",
+    name: "",
+    surname: ""
+  };
 
   @Output() public updateManager: EventEmitter<Manager> = new EventEmitter<Manager>();
 
@@ -21,19 +30,44 @@ export class CreateManagerComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private store: Store<Manager>,
     ) { }
+    
 
   ngOnInit() {
     this.managerFormGroup = this.formBuilder.group({
       id: '',
-      name: ['', Validators.required],
-      surname: ['',Validators.required],
-      user: ['',Validators.required],
-      password:['',Validators.required],
+      name: ['', [
+        Validators.required,
+        Validators.pattern('^[A-Za-z-]+$')
+      ]],
+      surname: ['',[
+        Validators.required,
+        Validators.pattern('^[A-Za-z-]+$')
+      ]],
+      user: ['',
+      [
+        Validators.required,
+        Validators.email
+      ]],
+      password:['',[
+        Validators.required,
+        Validators.minLength(6)
+      ]],
       date:'',
     });
+    this.managerFormGroup.valueChanges.subscribe((option) => {
+      if(this.submitted){
+        this.checkErrors();
+      }
+    })
+  }
+
+  checkErrors(){
+    this.error = HelperService.checkValidation(this.managerFormGroup);
   }
 
   public saveChanges(): void {
+    this.submitted=true;
+    this.checkErrors();
     if (this.managerFormGroup.invalid) {
       this.managerFormGroup.markAllAsTouched();
       return;

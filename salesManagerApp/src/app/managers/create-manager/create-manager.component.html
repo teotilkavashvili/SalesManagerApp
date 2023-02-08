@@ -1,21 +1,41 @@
 
   <form [formGroup]="managerFormGroup">
-    <mat-form-field appearance="outline">
-      <mat-label>{{"Name" | translate}}</mat-label>
-      <input matInput formControlName="name" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{"Surname" | translate}}</mat-label>
-      <input matInput formControlName="surname"/>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{"User" | translate}}</mat-label>
-      <input matInput formControlName="user" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{"Password" | translate}}</mat-label>
-      <input matInput formControlName="password" />
-    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{"Name" | translate}}</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <div class="error" *ngIf="error.name">
+        {{error.name}}
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{"Surname" | translate}}</mat-label>
+        <input matInput formControlName="surname"/>
+      </mat-form-field>
+      <div class="error" *ngIf="error.surname">
+        {{error.surname}}
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{"User" | translate}}</mat-label>
+        <input matInput formControlName="user" />
+      </mat-form-field>
+      <div class="error" *ngIf="error.user">
+        {{error.user}}
+      </div>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>{{"Password" | translate}}</mat-label>
+        <input matInput formControlName="password" />
+      </mat-form-field>
+      <div class="error" *ngIf="error.password">
+        {{error.password}}
+      </div>
+    </div>
   </form>
 
 

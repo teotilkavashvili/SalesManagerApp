@@ -4,7 +4,7 @@
       "id": 1,
       "label": "laptop",
       "price": "1200",
-      "quantity": 3,
+      "quantity": "8",
       "userId": 1,
       "soldQuantity": 0
     },
@@ -12,15 +12,23 @@
       "id": 2,
       "label": "ipod",
       "price": 300,
-      "quantity": 14,
+      "quantity": 15,
       "userId": 1,
-      "soldQuantity": 2
+      "soldQuantity": 0
     },
     {
-      "id": 4,
-      "label": "test",
-      "price": "123",
-      "quantity": 8,
+      "id": 9,
+      "label": "ipod",
+      "price": 300,
+      "quantity": 10,
+      "userId": 1,
+      "soldQuantity": 5
+    },
+    {
+      "id": 10,
+      "label": "ipod",
+      "price": 300,
+      "quantity": 15,
       "userId": 1,
       "soldQuantity": 0
     },
@@ -28,7 +36,7 @@
       "id": "fb49c2d9-fa88-4fad-b1b1-9aa81d78edc1",
       "label": "apple",
       "price": "88",
-      "quantity": 60,
+      "quantity": "22",
       "userId": 1,
       "soldQuantity": 30
     },
@@ -57,7 +65,7 @@
       "user": "teona@gmail.com",
       "password": "12345678",
       "date": "12/01/2023",
-      "totalIncome": 3240
+      "totalIncome": 4140
     },
     {
       "id": 2,
